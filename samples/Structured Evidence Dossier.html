@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structured Evidence Dossier — Yoshii et al. 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #fafbff;
+  color: #2a3440;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.report {
+  max-width: 760px;
+  margin: 48px auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 70px;
+  box-shadow: 0 4px 14px rgba(30,40,90,0.06);
+}
+
+@media (max-width: 860px) {
+  .report { padding: 32px 20px; margin: 20px 10px; }
+  .summary-grid { grid-template-columns: 1fr !important; }
+  .glossary-grid { grid-template-columns: 1fr !important; }
+  .concept-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── HEADER ── */
+.report-header { margin-bottom: 48px; }
+
+.product-family {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b8aed4;
+  margin-bottom: 20px;
+}
+
+.report-header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+.report-header .article-title {
+  font-size: 0.93rem;
+  font-weight: 400;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.report-header .report-type {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: #9b87f5;
+  letter-spacing: 0.01em;
+  margin-bottom: 28px;
+}
+
+.header-rule {
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #9b87f5, #d4c5ff, #d4f4e7);
+  margin-bottom: 20px;
+}
+
+.meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.meta-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.64rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 14px;
+  white-space: nowrap;
+  background: #f5f2ff;
+  color: #8878b8;
+  border: 1px solid #ede8ff;
+  letter-spacing: 0.01em;
+}
+.meta-tag.green { background: #f4fff9; color: #4a9070; border-color: #ddf2e8; }
+.meta-tag.blue  { background: #f2f9ff; color: #5a8aac; border-color: #ddeeff; }
+
+/* ── SECTION HEADINGS ── */
+h2 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 44px;
+  margin-bottom: 6px;
+  padding-bottom: 9px;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, #9b87f5, #d4c5ff, transparent) 1;
+  letter-spacing: -0.005em;
+}
+
+h2.primary {
+  font-size: 1.1rem;
+  margin-top: 48px;
+}
+
+h2.secondary {
+  font-size: 0.97rem;
+  color: #3a4550;
+}
+
+h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #7c5ccc;
+  margin-top: 22px;
+  margin-bottom: 9px;
+}
+
+h3.quiet {
+  color: #9a8dc0;
+  font-size: 0.85rem;
+}
+
+h4 {
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: #7c5ccc;
+  margin-top: 14px;
+  margin-bottom: 7px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, #e8deff, #d4f4e7, transparent);
+  margin: 32px 0;
+  border: none;
+}
+
+/* ── BODY ── */
+p { margin-bottom: 12px; font-size: 0.87rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ── SUMMARY PANEL ── */
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0 18px 0;
+}
+
+.summary-cell {
+  background: #fafbff;
+  border: 1px solid #e8deff;
+  border-radius: 10px;
+  padding: 16px 15px 14px 15px;
+}
+
+.summary-cell .cell-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9b87f5;
+  margin-bottom: 5px;
+}
+
+.summary-cell p { font-size: 0.82rem; margin-bottom: 0; line-height: 1.55; }
+
+/* ── SCOPE + LEGEND ── */
+.scope-line {
+  font-size: 0.73rem;
+  color: #7c5ccc;
+  font-weight: 500;
+  padding: 8px 14px;
+  background: #f8f6ff;
+  border-radius: 7px;
+  border: 1px solid #ede8ff;
+  margin: 12px 0 10px 0;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 10px 14px;
+  background: #fafbff;
+  border: 1px solid #f0eff4;
+  border-radius: 7px;
+  margin: 8px 0 4px 0;
+  font-size: 0.71rem;
+  color: #6b7a8a;
+}
+
+.legend-item { display: inline-flex; align-items: center; gap: 5px; }
+
+/* ── BOXES ── */
+.box {
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 14px 0;
+  font-size: 0.84rem;
+  box-shadow: 0 1px 3px rgba(30,40,90,0.03);
+}
+
+.box-info      { background: #f0f8ff; border-left: 4px solid #9b87f5; }
+.box-highlight { background: #f0fff8; border-left: 4px solid #7dd8a8; }
+.box-warning   { background: #fff9f0; border-left: 4px solid #ffb870; }
+.box-note      { background: #fdfcfa; border-left: 4px solid #e0dcd4; }
+
+.box p { margin-bottom: 6px; }
+.box p:last-child { margin-bottom: 0; }
+
+/* ── BADGES ── */
+.badge {
+  display: inline-block;
+  font-size: 0.67rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 5px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.badge-green  { background: #d4f4e7; color: #1e6b42; border: 1px solid #b4e4cc; }
+.badge-lilac  { background: #e8deff; color: #5b3ea5; border: 1px solid #d4c5ff; }
+.badge-yellow { background: #fff4d6; color: #8a6d20; border: 1px solid #ffe8a8; }
+.badge-red    { background: #ffd6d6; color: #a13030; border: 1px solid #ffc0c0; }
+.badge-blue   { background: #c9f0ff; color: #1a5a80; border: 1px solid #b5e4ff; }
+
+/* ── TABLES ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  margin: 10px 0 16px 0;
+}
+
+thead th {
+  background: linear-gradient(135deg, #9b87f5, #7ca0e8);
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  padding: 9px 12px;
+  font-size: 0.76rem;
+}
+
+thead th:first-child { border-radius: 8px 0 0 0; }
+thead th:last-child  { border-radius: 0 8px 0 0; }
+
+tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) { background: #fafbff; }
+tbody tr:hover { background: #f4f0ff; }
+
+/* ── SOURCE CARD ── */
+.source-card {
+  border: 1px solid #d4c5ff;
+  border-radius: 10px;
+  padding: 15px 17px;
+  font-size: 0.82rem;
+  background: #fff;
+}
+
+.source-card p { margin-bottom: 4px; }
+.source-card .doi { color: #7c5ccc; font-weight: 500; }
+.source-card .basis { font-size: 0.76rem; color: #7a8694; margin-top: 6px; }
+
+/* ── CONCEPT GRID (quiet) ── */
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 10px 0 14px 0;
+}
+
+.concept-card {
+  background: #fcfbff;
+  border: 1px solid #f0ecf8;
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+}
+
+.concept-card strong { color: #8878b8; font-weight: 600; font-size: 0.79rem; }
+.concept-card span { display: block; margin-top: 2px; color: #5c6674; font-size: 0.77rem; line-height: 1.5; }
+
+/* ── GLOSSARY (very quiet) ── */
+.glossary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 16px;
+  margin: 6px 0 12px 0;
+  font-size: 0.75rem;
+  color: #6b7a8a;
+}
+
+.glossary-item {
+  padding: 3px 0;
+  border-bottom: 1px solid #f4f3f8;
+  line-height: 1.45;
+}
+
+.glossary-item .gl { font-weight: 600; color: #9a8dc0; }
+
+/* ── CLEAN LIST ── */
+ul.clean { list-style: none; padding: 0; margin: 8px 0; }
+
+ul.clean li {
+  position: relative;
+  padding: 4px 0 4px 16px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+ul.clean li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #d4c5ff;
+}
+
+/* ── EVIDENCE POINTER ── */
+.ev { font-size: 0.71rem; color: #8a7cb8; font-style: italic; }
+
+/* ── MECHANISM ROW ── */
+.mech-row {
+  background: #fafbff;
+  border: 1px solid #eee;
+  border-radius: 9px;
+  padding: 13px 15px;
+  margin-bottom: 8px;
+  font-size: 0.83rem;
+}
+
+.mech-row p { margin-bottom: 4px; }
+.mech-row .mech-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+/* ── THEME LABEL ── */
+.theme-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9b87f5;
+  margin-top: 22px;
+  margin-bottom: 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px dashed #e8deff;
+}
+
+/* ── FOOTER ── */
+.report-footer {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.report-footer .brand {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #9b87f5;
+  letter-spacing: 0.05em;
+}
+
+.report-footer .sub {
+  font-size: 0.62rem;
+  color: #b8bcc6;
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+</style>
+</head>
+<body>
+<div class="report">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- HEADER                                     -->
+  <!-- ══════════════════════════════════════════ -->
+  <header class="report-header">
+    <div class="product-family">Scientific Evidence Dossier Series</div>
+    <h1>Structured Evidence Dossier</h1>
+    <div class="article-title">Intermittent Antibiotic Exposure of <em>E.&nbsp;coli</em> Biofilms Drives Resistance in Catheter-Associated Infection Models</div>
+    <div class="report-type">Single-Study Expanded PICO &amp; Mechanistic Evidence Map</div>
+    <div class="header-rule"></div>
+    <div class="meta-strip">
+      <span class="meta-tag">Single-Study Dossier</span>
+      <span class="meta-tag green">Mechanistic Evidence Map</span>
+      <span class="meta-tag blue">Antimicrobial Resistance</span>
+      <span class="meta-tag">Biofilm Infection Model</span>
+      <span class="meta-tag green">Preclinical Evidence</span>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- ANALYTICAL OVERVIEW                        -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2 class="primary">Analytical Overview</h2>
+
+  <div class="summary-grid">
+    <div class="summary-cell">
+      <span class="cell-label">What Was Studied</span>
+      <p>Whether intermittent vs continuous amikacin antibiotic lock therapy selects for antimicrobial resistance in <em>E.&nbsp;coli</em> biofilms, using in vitro and in vivo catheter models.</p>
+    </div>
+    <div class="summary-cell">
+      <span class="cell-label">What Was Found</span>
+      <p>Intermittent exposure drove convergent resistance mutations (<em>fusA</em>, <em>sbmA</em>, <em>cpxA</em>) and MIC increases across all tested conditions. Continuous 10-day treatment eradicated biofilms without resistance emergence.</p>
+    </div>
+    <div class="summary-cell">
+      <span class="cell-label">Why This Matters</span>
+      <p>The authors interpret these findings as evidence that biofilms subjected to intermittent antibiotic lock therapy may accumulate low-level resistance mutations that could otherwise go undetected in routine clinical monitoring.</p>
+    </div>
+  </div>
+
+  <div class="scope-line">Scope: single-study structured evidence mapping only — no external synthesis, cross-paper inference, or independent recommendations.</div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="badge badge-green">Supported</span> Reported in source</div>
+    <div class="legend-item"><span class="badge badge-lilac">Proposed</span> Author interpretation</div>
+    <div class="legend-item"><strong style="color:#9b87f5;">—</strong>&ensp;Direction not stated</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SOURCE SCOPE                               -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Source Scope</h2>
+  <div class="source-card">
+    <p><strong>Authors:</strong> Yoshii, Y., Thiriet-Rupert, S., Lebeaux, D., Ghigo, J.-M. &amp; Beloin, C.</p>
+    <p><strong>Title:</strong> Intermittent antibiotic exposure of <em>Escherichia coli</em> biofilms drives resistance in catheter-associated infection models</p>
+    <p><strong>Journal:</strong> <em>npj Biofilms and Microbiomes</em> 12, 41 (2026)</p>
+    <p class="doi"><strong>DOI:</strong> 10.1038/s41522-025-00906-4</p>
+    <p class="basis"><strong>Dataset basis:</strong> Structured from the extracted dataset supplied by the user. Claim labels (Supported / Proposed) and causal vs associative labels retained as extracted without reinterpretation.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SCIENTIFIC FOCUS (quieter)                 -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2 class="secondary">Scientific Focus</h2>
+
+  <h3 class="quiet">Core Concepts</h3>
+  <div class="concept-grid">
+    <div class="concept-card"><strong>AMR in ESKAPEE Pathogens</strong><span>Emerging resistance in clinically prioritised bacteria</span></div>
+    <div class="concept-card"><strong>Antibiotic Lock Therapy</strong><span>High-concentration antibiotic in catheter lumen to manage biofilm</span></div>
+    <div class="concept-card"><strong>Continuous vs Intermittent ALT</strong><span>Compared for efficacy and AMR risk</span></div>
+    <div class="concept-card"><strong>Biofilm Tolerance → Resistance</strong><span>Tolerance as stepping stone to heritable resistance</span></div>
+    <div class="concept-card"><strong>Pulsed Selective Pressure</strong><span>Cyclical selection in spatially structured communities</span></div>
+    <div class="concept-card"><strong>Evolutionary Incubator Hypothesis</strong><span>Biofilms accelerating adaptive mutation under treatment</span></div>
+  </div>
+
+  <h3 class="quiet">Key Terms</h3>
+  <div class="glossary-grid">
+    <div class="glossary-item"><span class="gl">MIC</span> — Minimum inhibitory concentration</div>
+    <div class="glossary-item"><span class="gl">ALT<sub>AMK</sub></span> — Amikacin lock therapy</div>
+    <div class="glossary-item"><span class="gl">ALT<sub>PBS</sub></span> — PBS control lock</div>
+    <div class="glossary-item"><span class="gl">CFU</span> — Colony-forming units</div>
+    <div class="glossary-item"><span class="gl">WGS</span> — Whole-population genome sequencing</div>
+    <div class="glossary-item"><span class="gl">CLSI</span> — Clinical &amp; Laboratory Standards Inst.</div>
+    <div class="glossary-item"><span class="gl">TIVAP</span> — Totally implantable venous access port</div>
+    <div class="glossary-item"><span class="gl">TPN</span> — Total parenteral nutrition</div>
+    <div class="glossary-item"><span class="gl">Si / Po / Ca</span> — Septum / port / catheter</div>
+    <div class="glossary-item"><span class="gl">LOD</span> — Limit of detection</div>
+    <div class="glossary-item"><span class="gl">CpxAR</span> — Two-component regulatory system</div>
+    <div class="glossary-item"><span class="gl">AcrAD-TolC</span> — Efflux pump system</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- BIOLOGICAL ENTITIES, PHENOTYPES & OUTCOMES -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Biological Entities, Phenotypes &amp; Outcomes</h2>
+
+  <h3>Organisms &amp; Systems</h3>
+  <table>
+    <thead><tr><th>Entity</th><th>Context / Model</th><th>Direction</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><em>E. coli</em> LF82</td><td>In vitro TIVAP biofilm</td><td>—</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td><em>E. coli</em> 55989</td><td>In vitro TIVAP biofilm</td><td>—</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td><em>E. coli</em> 55989pAT881</td><td>In vitro TPN &amp; in vivo rat (bioluminescent)</td><td>—</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>Crl:CD (SD) rats</td><td>In vivo preclinical catheter model</td><td>—</td><td><span class="badge badge-green">Supported</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Key Genes &amp; Molecular Entities</h3>
+  <table>
+    <thead><tr><th>Gene / Entity</th><th>Context</th><th>Role / Direction</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><em>fusA</em></td><td>Intermittent ALT<sub>AMK</sub>; all conditions</td><td>Associated with amikacin resistance</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td><em>sbmA</em></td><td>Intermittent ALT<sub>AMK</sub>; deleted in some 55989</td><td>Associated with aminoglycoside resistance</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td><em>cpxA</em></td><td>In vitro TPN-treated biofilms</td><td>Confers resistance via <em>acrD</em> regulation</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td><em>acrD</em> / AcrAD-TolC</td><td>CpxAR-regulated efflux transporter</td><td>—</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td><em>fimA</em> / <em>fimH</em></td><td>PBS &amp; treated biofilms; adhesion</td><td>—</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td><em>nuoA/C/D/N</em></td><td>Resistance / tolerance / persistence</td><td>Linked to resistance/tolerance</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>MFS transporter genes</td><td>Mutated in LF82 TIVAP 4</td><td>—</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>CpxRA system</td><td>Cell-envelope stress response</td><td>Regulates <em>acrD</em> and others</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>Elongation factor G</td><td>Ribosomal translocation (<em>fusA</em>)</td><td>—</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>ROS</td><td>Host infection context</td><td>Promote resistance development</td><td><span class="badge badge-green">Supported</span></td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:0.78rem; color:#6b7a8a;">The Δ11,024 nt deletion in 55989 encompassed <em>sbmA</em> plus <em>phoA_2</em>, <em>iraP</em>, <em>ddlA</em>, KOPPCICB_04469, <em>yaiY</em>, <em>yaiW</em>, KOPPCICB_04473, <em>ampH</em>, <em>iprA</em>, KOPPCICB_04476. <span class="badge badge-green">Supported</span></p>
+
+  <h3>Diseases, Phenotypes &amp; Clinical Outcomes</h3>
+  <table>
+    <thead><tr><th>Category</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>Primary focus</td><td>Catheter-related biofilm infections / CVC-related infections</td></tr>
+      <tr><td>Primary outcome</td><td>Low-level amikacin resistance emerging after intermittent ALT</td></tr>
+      <tr><td>Treatment outcome</td><td>Intermittent ALT<sub>AMK</sub> failed to eradicate biofilms</td></tr>
+      <tr><td>Background</td><td>Acute GI infections; chronic UTIs (<em>E. coli</em>); AMR-related morbidity worldwide; resistance after intermittent ALT in haemodialysis patients</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- EVIDENCE ARCHITECTURE                      -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Evidence Architecture</h2>
+  <table>
+    <thead><tr><th>Model / System</th><th>Details</th></tr></thead>
+    <tbody>
+      <tr><td>In vitro TIVAP (LB)</td><td>Paediatric 5 Fr TIVAPs; continuous LB flow; n = 3 per group</td></tr>
+      <tr><td>In vitro TIVAP (TPN)</td><td>TIVAP model with TPN as nutritional medium</td></tr>
+      <tr><td>In vivo rat TIVAP</td><td>Implanted TIVAPs in Crl:CD (SD) rats; n = 3 per group</td></tr>
+      <tr><td>Bioluminescence imaging</td><td>IVIS Spectrum CT; real-time biofilm monitoring</td></tr>
+      <tr><td>Whole-population sequencing</td><td>BreSeq v0.35.0; avg depth 150×; detection limit 5%</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- EXPOSURES, INTERVENTIONS & COMPARATORS     -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Exposures, Interventions &amp; Comparators</h2>
+
+  <table>
+    <thead><tr><th>Intervention</th><th>Details</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr><td>10-day continuous ALT<sub>AMK</sub></td><td>500× MIC (8 mg/mL), daily exchange</td><td>In vitro LB</td></tr>
+      <tr><td>7-day continuous ALT<sub>AMK</sub></td><td>500× MIC (8 mg/mL), daily exchange</td><td>In vitro LB</td></tr>
+      <tr><td>Intermittent ALT<sub>AMK</sub> — 7 cycles</td><td>8-h lock / 16-h LB flow, 500× MIC</td><td>In vitro LB; LF82 &amp; 55989</td></tr>
+      <tr><td>Intermittent ALT<sub>AMK</sub> — 4 cycles</td><td>8-h lock / 16-h TPN flow, 500× MIC</td><td>In vitro TPN; 55989pAT881</td></tr>
+      <tr><td>Intermittent ALT<sub>AMK</sub> — 4 cycles (in vivo)</td><td>8-h lock / 16-h TPN withdrawal, 500× MIC</td><td>In vivo rat</td></tr>
+      <tr><td>ALT<sub>PBS</sub> control</td><td>250 µL PBS into TIVAP</td><td>All models</td></tr>
+      <tr><td>Ceftriaxone</td><td>200 mg/kg SC once daily</td><td>In vivo systemic infection prevention</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Biofilm Growth &amp; Inocula</h3>
+  <p>Biofilm establishment: 48-h continuous LB flow (LB experiments); 72-h TPN (TPN &amp; in vivo). 3-day recovery phase after ALT cycles. Inocula: ~10² CFU/100 µL (LF82 &amp; 55989, in vitro LB); 10⁶ CFU/100 µL (55989pAT881, in vitro TPN); 1 × 10⁷ CFU (in vivo). TIVAP volume ≈ 250 µL; flow rate 300 µL/min.</p>
+
+  <h3>Comparators</h3>
+  <p>ALT<sub>PBS</sub> served as the primary control. Additional comparisons: ancestor populations (MIC baselines); continuous 10-day vs 7-day ALT<sub>AMK</sub>; intermittent ALT<sub>AMK</sub> vs PBS; LB vs TPN context where explicitly tested.</p>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- KEY FINDINGS & EVIDENCE MAP                -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2 class="primary">Key Findings &amp; Evidence Map</h2>
+
+  <h3>Continuous ALT<sub>AMK</sub></h3>
+  <table>
+    <thead><tr><th>Metric</th><th>Result</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr><td>48-h LF82 biofilm burden</td><td>~4.0 × 10⁸ cells/TIVAP</td><td>Baseline LB growth</td></tr>
+      <tr><td>1-day ALT<sub>AMK</sub></td><td>~5-log reduction vs PBS</td><td>Free-floating &amp; biofilm cells</td></tr>
+      <tr><td>10-day endpoint</td><td>Eradicated; prevented regrowth (p &lt; 0.001)</td><td>Complete eradication</td></tr>
+      <tr><td>7-day — free-floating</td><td>~10⁸ CFU/mL after recovery</td><td>≈ PBS level</td></tr>
+      <tr><td>7-day — biofilm</td><td>10⁹ CFU/TIVAP after recovery</td><td>≈ PBS level</td></tr>
+      <tr><td>7-day — resistance</td><td>&lt; 0.1% amikacin-plate growth; MIC = ancestor</td><td>No mutations; no shift</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Intermittent ALT<sub>AMK</sub> — In Vitro LB</h3>
+  <table>
+    <thead><tr><th>Metric</th><th>Result</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr><td>Amikacin-plate growth — LF82</td><td>2/3 replicates: 10–100%</td><td>End of cycles</td></tr>
+      <tr><td>Amikacin-plate growth — 55989</td><td>3/3 replicates: 1–10%</td><td>End of cycles</td></tr>
+      <tr><td>PBS controls</td><td>0.001–0.1% throughout</td><td>Both strains</td></tr>
+      <tr><td>Population MIC — LF82</td><td>32 µg/mL (LB) / 8 µg/mL (MH)</td><td>2-fold increase; all replicates</td></tr>
+      <tr><td>Population MIC — 55989</td><td>24 µg/mL (LB) / 6 µg/mL (MH)</td><td>1.5-fold increase; all replicates</td></tr>
+      <tr><td>CLSI breakpoints (ref.)</td><td>Susceptible ≤ 4; Resistant ≥ 16 µg/mL (MH)</td><td>Reference</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Genomic Findings — In Vitro LB</h4>
+  <table>
+    <thead><tr><th>Gene</th><th>Observation</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr><td><em>sbmA</em></td><td>Mutated in 2/3 LF82; deleted (Δ11,024 nt) in 2/3 55989</td><td>Treatment-specific; absent in PBS</td></tr>
+      <tr><td><em>fusA</em></td><td>Mutated in 2/3 55989; low freq. in 2/3 LF82</td><td>Convergent; absent in PBS</td></tr>
+      <tr><td><em>fimA</em></td><td>Detected across PBS, AMK-treated, and 7-day conditions</td><td>Multiple conditions</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Intermittent ALT<sub>AMK</sub> — In Vitro TPN</h3>
+  <table>
+    <thead><tr><th>Metric</th><th>Result</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr><td>Growth frequency</td><td>~10-fold increase to 0.1–1% in 2/3 replicates vs PBS 0.01–0.1%</td><td>Recovery &amp; endpoint</td></tr>
+      <tr><td>Population MIC</td><td>24 µg/mL (LB) / 6 µg/mL (MH) in 2 replicates</td><td>Low-level resistance</td></tr>
+      <tr><td>Convergent mutations</td><td><em>fusA</em> ≥ 10% in TIVAP 6; <em>cpxA</em> ≥ 10% in TIVAPs 5 &amp; 6</td><td>Endpoint WGS</td></tr>
+    </tbody>
+  </table>
+
+  <h3>In Vivo Results</h3>
+  <table>
+    <thead><tr><th>Metric</th><th>Result</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr><td>Bioluminescence</td><td>Decreased → disappeared after 2nd cycle → resurfaced in Rat 4 during recovery</td><td>Imaging</td></tr>
+      <tr><td>Endpoint recovery</td><td>6/9 TIVAP parts recovered cells</td><td>ALT<sub>AMK</sub> group</td></tr>
+      <tr><td>CFU comparison</td><td>ALT<sub>AMK</sub> tended lower; not significant (p = 0.222)</td><td>Extracted TIVAP CFU</td></tr>
+      <tr><td>Resistance enrichment</td><td>10–100% amikacin-plate growth vs ~0.01% PBS (p &lt; 0.001)</td><td>Strong enrichment</td></tr>
+      <tr><td>Population MIC range</td><td>24–96 µg/mL (LB) / 6–24 µg/mL (MH)</td><td>Across 3 rats</td></tr>
+      <tr><td>Individual MICs (LB / MH)</td><td>Rat 4: 24/6 · Rat 5: 24/6 · Rat 6: 96/24</td><td>Rat 6 = 6-fold rise</td></tr>
+      <tr><td>Dominant mutation</td><td><em>fusA</em> across all 6 analysed TIVAP parts</td><td>Endpoint WGS</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Cross-Condition Synthesis</h3>
+  <div class="box box-highlight">
+    <p><em>fusA</em> mutations appeared in all four intermittent ALT<sub>AMK</sub> conditions at ≥ 5% frequency. Most conditions showed 1.5- to 2.0-fold MIC increases (4 → 6–8 µg/mL MH; 16 → 24–32 µg/mL LB). Rat 6 was exceptional: 6-fold rise (4 → 24 µg/mL MH; 16 → 96 µg/mL LB). In vivo resistance appeared to develop faster and at higher levels than in vitro.</p>
+  </div>
+
+  <h4>Additional Parameters</h4>
+  <table>
+    <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>TPN-model bacterial load</td><td>10⁷ – 10⁸ CFU/TIVAP</td></tr>
+      <tr><td>In vivo endpoint counts</td><td>10³ – 10⁷ CFU/TIVAP</td></tr>
+      <tr><td>In vivo growth frequencies</td><td>~10% (ALT<sub>AMK</sub>) vs 0.01% (PBS)</td></tr>
+      <tr><td>WGS depth / BreSeq limit</td><td>150× / 5% mutation frequency</td></tr>
+      <tr><td>LOD for CFU</td><td>10 CFU/mL</td></tr>
+      <tr><td><em>E. coli</em> in CVC infections</td><td>9.7–20% (background)</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:0.82rem;">Statistical tests (Welch's t-test): 10-day eradication p &lt; 0.001; intermittent experiments p &lt; 0.05; in vivo growth-frequency comparison p &lt; 0.001.</p>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MECHANISTIC & CAUSAL/ASSOCIATIVE           -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2 class="primary">Mechanistic &amp; Causal / Associative Relations</h2>
+
+  <div class="theme-label">Resistance-Linked Mutations</div>
+
+  <div class="mech-row">
+    <p>Loss-of-function mutations in <em>sbmA</em> and mutations in <em>fusA</em> have previously been associated with increased aminoglycoside resistance. Deleting <em>sbmA</em> reduces aminoglycoside susceptibility.</p>
+    <div class="mech-meta"><span class="badge badge-green">Supported</span> <span class="ev">Results; Discussion</span></div>
+  </div>
+
+  <div class="mech-row">
+    <p>Elongation factor G mutations selectively silence drug-bound ribosomes, preventing error cluster formation and reducing the second self-promoted uptake phase of aminoglycosides by preserving proteome and membrane integrity.</p>
+    <div class="mech-meta"><span class="badge badge-green">Supported</span> <span class="ev">Discussion</span></div>
+  </div>
+
+  <div class="mech-row">
+    <p>Mutations in <em>nuoA·C/D</em> and <em>nuoC/D·N</em> genes are linked to aminoglycoside resistance, tolerance, and persistence.</p>
+    <div class="mech-meta"><span class="badge badge-green">Supported</span> <span class="ev">Discussion</span></div>
+  </div>
+
+  <div class="theme-label">Stress Response &amp; Efflux Regulation</div>
+
+  <div class="mech-row">
+    <p>Mutations in <em>cpxA</em> can confer aminoglycoside resistance by regulating <em>acrD</em>, encoding the AcrD transporter of the AcrAD-TolC efflux pump. CpxRA senses cell-envelope stresses and regulates downstream genes including <em>acrD</em>.</p>
+    <div class="mech-meta"><span class="badge badge-green">Supported</span> <span class="ev">Results; Discussion</span></div>
+  </div>
+
+  <div class="mech-row">
+    <p><em>cpxA</em> single amino acid substitutions could alter CpxRA functionality and affect regulons including <em>acrD</em>.</p>
+    <div class="mech-meta"><span class="badge badge-lilac">Proposed</span> <span class="ev">Discussion</span></div>
+  </div>
+
+  <div class="theme-label">Biofilm Adaptation</div>
+
+  <div class="mech-row">
+    <p>Enhanced mutation rate in biofilms increases the likelihood of accumulating emergent resistance mutations even without antibiotic pressure.</p>
+    <div class="mech-meta"><span class="badge badge-green">Supported</span> <span class="ev">Results</span></div>
+  </div>
+
+  <div class="mech-row">
+    <p><em>fimA</em>/<em>fimH</em> mutations selected by biofilm lifestyle may affect biofilm-forming capacity and tolerance to amikacin, promoting emergence of resistance mutations.</p>
+    <div class="mech-meta"><span class="badge badge-lilac">Proposed</span> <span class="ev">Results &amp; Discussion</span></div>
+  </div>
+
+  <h3>Causal vs Associative Relations</h3>
+  <table>
+    <thead><tr><th>Relation</th><th>Label</th><th>Claim</th></tr></thead>
+    <tbody>
+      <tr><td>Intermittent ALT<sub>AMK</sub> failed to eradicate biofilms and promoted amikacin resistance</td><td>Causal</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>10-day continuous ALT<sub>AMK</sub> eradicated biofilms without favouring resistance</td><td>Result</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>7-day continuous ALT<sub>AMK</sub> failed eradication but did not cause resistance</td><td>Result</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>Resistance evolution trajectory is strain-specific</td><td>Association</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>Host ROS promote antibiotic resistance development</td><td>Mechanism</td><td><span class="badge badge-green">Supported</span></td></tr>
+      <tr><td>Convergent <em>fusA</em>, <em>sbmA</em>, <em>cpxA</em> mutations may have contributed to increased resistance</td><td>Interpretation</td><td><span class="badge badge-lilac">Proposed</span></td></tr>
+      <tr><td>Host immune environment could synergise with antibiotic selection to accelerate resistance</td><td>Interpretation</td><td><span class="badge badge-lilac">Proposed</span></td></tr>
+      <tr><td>Superior 10-day vs 7-day results likely due to greater exposure and amikacin accumulation</td><td>Interpretation</td><td><span class="badge badge-lilac">Proposed</span></td></tr>
+      <tr><td>Intermittent selection pressure remains the primary resistance driver in structured communities</td><td>Interpretation</td><td><span class="badge badge-lilac">Proposed</span></td></tr>
+      <tr><td>Blood-borne ceftriaxone during ALT → TPN transition may influence in vivo resistance</td><td>Interpretation</td><td><span class="badge badge-lilac">Proposed</span></td></tr>
+      <tr><td><em>sbmA</em> region might be a fragile spot where breaks occur</td><td>Interpretation</td><td><span class="badge badge-lilac">Proposed</span></td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- CONSTRAINTS & UNCERTAINTY                  -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2 class="primary">Constraints &amp; Uncertainty</h2>
+  <div class="box box-warning">
+    <ul class="clean">
+      <li>Small in vivo sample size (n = 3 per group) may limit statistical power.</li>
+      <li>Tested strains and nutritional conditions may not fully mimic clinical settings.</li>
+      <li>Mechanisms behind rapid and higher-level in vivo resistance remain unclear.</li>
+      <li>In vivo TPN was instilled, not continuously infused, because rats could not be immobilised.</li>
+      <li>Systemic ceftriaxone in vivo may have influenced amikacin resistance dynamics.</li>
+      <li>Authors suggest further work using a continuous drip infusion pig catheter model.</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- INTERPRETIVE SIGNALS                       -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Interpretive Signals from the Authors</h2>
+
+  <div class="theme-label">Resistance Evolution &amp; Biofilm Dynamics</div>
+
+  <div class="mech-row">
+    <p>The authors interpret these findings as evidence that biofilms may act as evolutionary incubators in which medical interventions unintentionally influence adaptation outcomes.</p>
+    <div class="mech-meta"><span class="badge badge-lilac">Proposed</span></div>
+  </div>
+
+  <div class="mech-row">
+    <p>Low-level resistance in treated biofilms may be overlooked clinically and may contribute to selection of high-level resistant mutants.</p>
+    <div class="mech-meta"><span class="badge badge-lilac">Proposed</span></div>
+  </div>
+
+  <div class="mech-row">
+    <p>High-level resistance is selectively promoted during treatment when nutrient levels are high.</p>
+    <div class="mech-meta"><span class="badge badge-lilac">Proposed</span></div>
+  </div>
+
+  <div class="theme-label">Molecular Contributors</div>
+
+  <div class="mech-row">
+    <p><em>fimA</em>/<em>fimH</em> mutations may have increased biofilm formation, persister frequency, and overall tolerance.</p>
+    <div class="mech-meta"><span class="badge badge-lilac">Proposed</span></div>
+  </div>
+
+  <div class="mech-row">
+    <p><em>cpxA</em> mutants are likely linked with amikacin resistance; other mutated genes (MFS transporters, <em>nuo</em> genes) may collectively contribute to low-level resistance.</p>
+    <div class="mech-meta"><span class="badge badge-lilac">Proposed</span></div>
+  </div>
+
+  <div class="theme-label">Clinical &amp; Translational Implications</div>
+
+  <div class="mech-row">
+    <p>Optimising antimicrobial timing could mitigate resistance emergence. The principle may extend to other biofilm-related infections exposed to short-term dosing.</p>
+    <div class="mech-meta"><span class="badge badge-lilac">Proposed</span></div>
+  </div>
+
+  <div class="mech-row">
+    <p>Intermittent treatment may occur in other infections due to poor adherence, adversely affecting efficacy. Further research is needed to optimise dose and schedule for intermittent regimens.</p>
+    <div class="mech-meta"><span class="badge badge-lilac">Proposed</span></div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- EVIDENCE BASIS & TRACEABILITY              -->
+  <!-- ══════════════════════════════════════════ -->
+  <h2>Evidence Basis &amp; Traceability</h2>
+  <div class="box box-note">
+    <p><strong>Source:</strong> All claims extracted from the structured dataset supplied by the user, derived from Yoshii et al. (2026). No external information added.</p>
+    <p><strong>Claim labels:</strong> <span class="badge badge-green">Supported</span> = reported result, mechanistic finding, or causal/associative observation. <span class="badge badge-lilac">Proposed</span> = author interpretation, hypothesis, or implication.</p>
+    <p><strong>Direction:</strong> Assigned only where explicitly stated; otherwise "—". <strong>Numeric ambiguity:</strong> Retained as extracted (all entries NO or NA in source).</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- FOOTER                                     -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="report-footer">
+    <div class="brand">Scientific Evidence Dossier Series — Structured Evidence Dossier</div>
+    <div class="sub">Single-Study</div>
+  </div>
+
+</div>
+</body>
+</html>
