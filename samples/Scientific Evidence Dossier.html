@@ -1,0 +1,2931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scientific Evidence Dossier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+
+    :root {
+      --bg-page: #fafbff;
+      --bg-card: #ffffff;
+      --text-main: #2a3440;
+      --text-muted: #6b7785;
+      --text-soft: #8a94a3;
+
+      --purple-main: #9b87f5;
+      --purple-soft: #d4c5ff;
+      --purple-bg: #e8deff;
+      --purple-bg-2: #f0e5ff;
+      --purple-strong: #7c5ccc;
+
+      --mint-bg: #f0fff8;
+      --mint-soft: #d4f4e7;
+      --mint-strong: #7dd8a8;
+
+      --yellow-bg: #fff9f0;
+      --yellow-soft: #fff4d6;
+      --yellow-strong: #ffb870;
+
+      --red-bg: #fff5f5;
+      --red-soft: #ffd6d6;
+      --red-strong: #d55050;
+
+      --blue-bg: #f0f8ff;
+      --blue-soft: #c9f0ff;
+      --blue-strong: #4b88d6;
+
+      --border-soft: rgba(155, 135, 245, 0.10);
+      --border-table: #edf0fb;
+
+      --shadow-soft:
+        0 8px 48px rgba(30, 40, 90, 0.09),
+        0 2px 8px rgba(30, 40, 90, 0.04);
+      --shadow-card-inset: 0 2px 8px rgba(30, 40, 90, 0.04);
+
+      --radius-card: 18px;
+      --radius-soft: 10px;
+      --radius-pill: 999px;
+
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 56px 16px 72px;
+    }
+
+    .report-container {
+      width: 100%;
+      max-width: 820px;
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 80px 72px 76px;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 24px 12px 44px;
+      }
+
+      .report-container {
+        padding: 40px 24px 36px;
+        border-radius: 14px;
+      }
+    }
+
+    /* Typography */
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 1.95rem;
+      line-height: 1.2;
+      letter-spacing: -0.028em;
+      margin-bottom: 6px;
+    }
+
+    .h1-underline {
+      width: 140px;
+      height: 4px;
+      margin-top: 15px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(90deg, #d4c5ff, #b5e4ff);
+    }
+
+    h2 {
+      font-size: 1.07rem;
+      margin-top: 56px;
+      margin-bottom: 20px;
+      padding: 4px 0 11px 12px;
+      margin-left: -12px;
+      margin-right: -12px;
+      letter-spacing: -0.005em;
+      border-bottom: 1px solid rgba(155, 135, 245, 0.30);
+      background: linear-gradient(90deg, rgba(155, 135, 245, 0.12), rgba(181, 228, 255, 0));
+    }
+
+    h3 {
+      font-size: 0.96rem;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: var(--purple-strong);
+      letter-spacing: -0.005em;
+    }
+
+    h4 {
+      font-size: 0.9rem;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      color: var(--purple-strong);
+    }
+
+    p {
+      margin: 0 0 14px 0;
+      font-size: 0.93rem;
+    }
+
+    .subtitle {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      line-height: 1.7;
+    }
+
+    /* Header */
+
+    .report-header {
+      margin-bottom: 18px;
+    }
+
+    .product-family {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a79acb;
+      margin-bottom: 12px;
+    }
+
+    /* Meta strip */
+
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+      margin-bottom: 4px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      background: #f8f7ff;
+      border: 1px solid #e6e0fb;
+      font-size: 0.73rem;
+      line-height: 1.35;
+      color: #55606e;
+    }
+
+    .meta-pill strong {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--purple-strong);
+      font-weight: 700;
+    }
+
+    /* Summary / snapshot */
+
+    .summary-grid,
+    .exec-snapshot-grid,
+    .section-grid-2 {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    }
+
+    .summary-cell {
+      background: #fafbff;
+      border: 1px solid var(--purple-bg);
+      border-radius: 10px;
+      padding: 16px 15px 14px;
+      box-shadow: var(--shadow-card-inset);
+    }
+
+    .summary-cell .cell-label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      color: var(--purple-main);
+    }
+
+    .summary-cell p,
+    .summary-cell li {
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .exec-snapshot {
+      margin-top: 22px;
+      padding: 18px 18px 16px;
+      border-radius: 12px;
+      background: var(--mint-bg);
+      border: 1px solid var(--mint-soft);
+      box-shadow: var(--shadow-card-inset);
+    }
+
+    /* Dividers */
+
+    .divider {
+      height: 1px;
+      margin: 44px 0;
+      background: linear-gradient(
+        90deg,
+        rgba(155, 135, 245, 0.18),
+        rgba(181, 228, 255, 0.08),
+        transparent
+      );
+    }
+
+    /* Callout boxes */
+
+    .box,
+    .info-box,
+    .highlight-box,
+    .warning-box,
+    .note-box {
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 14px 0;
+      border: 1px solid transparent;
+      border-left: 4px solid transparent;
+      box-shadow: 0 2px 8px rgba(30, 40, 90, 0.04);
+    }
+
+    .info-box {
+      background: var(--blue-bg);
+      border-color: #dbeffd;
+      border-left-color: var(--purple-main);
+    }
+
+    .highlight-box {
+      background: var(--mint-bg);
+      border-color: #d7f1e5;
+      border-left-color: var(--mint-strong);
+    }
+
+    .warning-box {
+      background: var(--yellow-bg);
+      border-color: #ffe9bf;
+      border-left-color: var(--yellow-strong);
+    }
+
+    .note-box {
+      background: #f7f6ff;
+      border-color: #e1defa;
+      border-left-color: var(--purple-main);
+    }
+
+    .box-title {
+      margin-bottom: 7px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.065em;
+      color: #1f2233;
+    }
+
+    .box-body {
+      font-size: 0.86rem;
+      line-height: 1.77;
+      color: var(--text-main);
+    }
+
+    /* Tables */
+
+    table {
+      width: 100%;
+      margin: 12px 0 20px 0;
+      border-collapse: collapse;
+      border: 1px solid var(--border-table);
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 0.84rem;
+    }
+
+    thead {
+      background: linear-gradient(90deg, #d4c5ff, #b5e4ff);
+    }
+
+    th, td {
+      padding: 10px 13px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.81rem;
+      font-weight: 600;
+      color: #142033;
+      letter-spacing: 0.012em;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    td {
+      line-height: 1.67;
+      border-bottom: 1px solid var(--border-table);
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fafbff;
+    }
+
+    tbody tr:hover {
+      background: #f2f4ff;
+    }
+
+    /* Visually separate the paired last columns in Evidence Triage */
+    th.col-tier {
+      background: rgba(212, 244, 231, 0.45);
+      color: #18794e;
+    }
+
+    th.col-conf {
+      background: rgba(181, 228, 255, 0.45);
+      color: #255b98;
+    }
+
+    td.col-tier {
+      background: rgba(212, 244, 231, 0.12);
+      border-left: 2px solid #d4f4e7;
+    }
+
+    td.col-conf {
+      background: rgba(181, 228, 255, 0.12);
+      border-left: 2px solid #c9f0ff;
+    }
+
+    .compact-table-note {
+      margin-top: -2px;
+      margin-bottom: 10px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Badges */
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 10px 0 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      font-size: 0.695rem;
+      font-weight: 600;
+      letter-spacing: 0.015em;
+      white-space: nowrap;
+    }
+
+    .badge-green {
+      background: var(--mint-bg);
+      border-color: #c2ecd7;
+      color: #18794e;
+    }
+
+    .badge-red {
+      background: var(--red-bg);
+      border-color: var(--red-soft);
+      color: #a33232;
+    }
+
+    .badge-yellow {
+      background: var(--yellow-bg);
+      border-color: #ffe2a8;
+      color: #8c5a10;
+    }
+
+    .badge-blue {
+      background: var(--blue-bg);
+      border-color: var(--blue-soft);
+      color: #255b98;
+    }
+
+    .badge-lilac {
+      background: var(--purple-bg-2);
+      border-color: var(--purple-soft);
+      color: #5a3db2;
+    }
+
+    /* Lists */
+
+    ul {
+      margin: 8px 0 14px 0;
+      padding-left: 20px;
+      font-size: 0.9rem;
+    }
+
+    li {
+      margin-bottom: 6px;
+      line-height: 1.72;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    ul.clean {
+      list-style: none;
+      padding-left: 0;
+      margin: 8px 0;
+    }
+
+    ul.clean li {
+      position: relative;
+      padding: 4px 0 4px 16px;
+      font-size: 0.84rem;
+      line-height: 1.6;
+    }
+
+    ul.clean li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--purple-soft);
+    }
+
+    /* Utility components */
+
+    .scope-line {
+      margin: 12px 0 10px;
+      padding: 8px 14px;
+      font-size: 0.73rem;
+      font-weight: 500;
+      color: var(--purple-strong);
+      background: #f8f6ff;
+      border: 1px solid #ede8ff;
+      border-radius: 7px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 8px 0 4px 0;
+      padding: 10px 14px;
+      font-size: 0.71rem;
+      color: #6b7a8a;
+      background: #fafbff;
+      border: 1px solid #f0eff4;
+      border-radius: 7px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .theme-label {
+      margin-top: 22px;
+      margin-bottom: 8px;
+      padding-bottom: 3px;
+      border-bottom: 1px dashed var(--purple-bg);
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      color: var(--purple-main);
+    }
+
+    .mech-row {
+      margin-bottom: 8px;
+      padding: 13px 15px;
+      font-size: 0.83rem;
+      background: #fafbff;
+      border: 1px solid #eee;
+      border-radius: 9px;
+    }
+
+    .mech-row p {
+      margin-bottom: 4px;
+    }
+
+    .mech-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .appendix-block {
+      margin-top: 18px;
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      line-height: 1.75;
+      background: #f8f7ff;
+      border: 1px dashed #cbc3ff;
+      border-radius: 12px;
+    }
+
+    .ev {
+      font-size: 0.71rem;
+      font-style: italic;
+      color: #8a7cb8;
+    }
+
+    /* Footer */
+
+    .report-footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+
+    .report-footer .brand {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--purple-main);
+    }
+
+    .report-footer .sub {
+      margin-top: 2px;
+      font-size: 0.62rem;
+      letter-spacing: 0.02em;
+      color: #b8bcc6;
+    }
+
+    /* Responsive grids */
+
+    @media (max-width: 720px) {
+      .summary-grid,
+      .exec-snapshot-grid,
+      .section-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Print */
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+      }
+
+      .report-container {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 40px 36px;
+      }
+    }
+  
+  
+    /* ── Aliases & bridges ─────────────────────────────────────── */
+    .page, .doc {
+      width: 100%; max-width: 820px; background: var(--bg-card);
+      border-radius: var(--radius-card); border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft); padding: 80px 72px 76px;
+    }
+    @media (max-width: 900px) { .page, .doc { padding: 40px 24px 36px; border-radius: 14px; } }
+    .hero, .doc-header { margin-bottom: 18px; }
+    .eyebrow { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#a79acb; margin-bottom:12px; }
+    .h1-sub { font-size:1.4rem; color:var(--text-muted); font-weight:500; }
+    .h1-rule { width:140px; height:4px; margin-top:15px; border-radius:var(--radius-pill); background:linear-gradient(90deg,#d4c5ff,#b5e4ff); }
+    .content { margin-top:32px; }
+    .section { margin-bottom:16px; }
+    .scope-note { margin:14px 0 4px; padding:12px 16px; font-size:.82rem; line-height:1.7; color:var(--text-muted); background:#f8f6ff; border:1px solid #e6e0fb; border-left:4px solid var(--purple-main); border-radius:10px; }
+    .section-intro { font-size:.87rem; color:var(--text-muted); margin-bottom:12px; line-height:1.7; }
+    /* Bottom line */
+    .bottomline { margin:18px 0 10px; padding:18px 18px 16px; border-radius:12px; background:var(--mint-bg); border:1px solid var(--mint-soft); box-shadow:var(--shadow-card-inset); }
+    .bottomline-title { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.10em; color:var(--purple-main); margin-bottom:8px; }
+    .answer { font-size:.9rem; line-height:1.7; color:var(--text-main); font-weight:500; }
+    /* Grids */
+    .grid-2 { display:grid; gap:16px; grid-template-columns:1fr 1fr; margin:14px 0; }
+    .grid-3 { display:grid; gap:14px; grid-template-columns:repeat(3,1fr); margin:14px 0; }
+    @media (max-width:720px) { .grid-2,.grid-3 { grid-template-columns:1fr; } }
+    /* Cards */
+    .card { background:#fafbff; border:1px solid var(--purple-bg); border-radius:10px; padding:14px 15px 12px; font-size:.86rem; line-height:1.65; box-shadow:var(--shadow-card-inset); }
+    .card.soft { background:#f4f0ff; border-color:#ded6f9; }
+    .card .label,.card>.label { display:block; margin-bottom:7px; font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.10em; color:var(--purple-main); }
+    .card p { font-size:.84rem; }
+    /* Ratings */
+    .rating-row { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+    .rating { display:inline-flex; align-items:center; padding:3px 10px; border-radius:var(--radius-pill); border:1px solid transparent; font-size:.67rem; font-weight:600; letter-spacing:.01em; white-space:nowrap; }
+    .rating.high { background:var(--mint-bg); border-color:#c2ecd7; color:#18794e; }
+    .rating.moderate { background:var(--yellow-bg); border-color:#ffe2a8; color:#8c5a10; }
+    .rating.low { background:var(--red-bg); border-color:var(--red-soft); color:#a33232; }
+    /* Bullets */
+    ul.bullets { list-style:none; padding-left:0; margin:8px 0; }
+    ul.bullets li { position:relative; padding:3px 0 3px 16px; font-size:.84rem; line-height:1.6; }
+    ul.bullets li::before { content:""; position:absolute; left:0; top:11px; width:5px; height:5px; border-radius:50%; background:var(--purple-soft); }
+    /* Inline spans */
+    .kicker { font-weight:600; color:var(--purple-strong); }
+    .trace { display:inline-block; margin:2px 4px 2px 0; padding:1px 7px; border-radius:5px; background:#f0ecff; border:1px solid #d8cfff; font-size:.65rem; font-family:'SFMono-Regular','Consolas',monospace; color:#5a3db2; letter-spacing:.01em; }
+    /* Theme blocks */
+    .theme { margin-bottom:20px; padding:16px 18px 14px; border-radius:12px; background:#fafbff; border:1px solid #eceafd; box-shadow:var(--shadow-card-inset); }
+    .theme-head { margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid #eceafd; }
+    .theme-head h3 { margin-top:0; margin-bottom:8px; }
+    .theme-grid { display:grid; gap:16px; grid-template-columns:1fr 1fr; }
+    @media (max-width:720px) { .theme-grid { grid-template-columns:1fr; } }
+    /* TOC */
+    .toc { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 14px; }
+    .toc a { display:inline-flex; align-items:center; padding:5px 12px; border-radius:var(--radius-pill); background:#f0ecff; border:1px solid #ded6f9; font-size:.73rem; font-weight:500; color:var(--purple-strong); text-decoration:none; }
+    .toc a:hover { background:#e6dfff; }
+    td.verdict { font-weight:600; color:var(--purple-strong); }
+    .callout { margin:12px 0; padding:12px 16px; font-size:.84rem; background:#fff9f0; border:1px solid #ffe9bf; border-left:4px solid var(--yellow-strong); border-radius:10px; }
+    .strip { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    /* Meta grid */
+    .meta-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:16px; }
+    @media (max-width:720px) { .meta-grid { grid-template-columns:1fr; } }
+    .meta-card { padding:10px 12px; border-radius:9px; background:#fafbff; border:1px solid #eceafd; font-size:.78rem; }
+    .meta-card .k { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--purple-main); margin-bottom:4px; }
+    .meta-card .v { color:var(--text-muted); line-height:1.5; }
+    p.small, .small { font-size:.78rem; color:var(--text-muted); line-height:1.6; }
+    /* File 1 extras */
+    .header-card { margin-top:20px; padding:16px 18px; border-radius:12px; background:#fafbff; border:1px solid #eceafd; box-shadow:var(--shadow-card-inset); }
+    .header-grid { display:grid; gap:20px; grid-template-columns:1fr 1fr; }
+    @media (max-width:720px) { .header-grid { grid-template-columns:1fr; } }
+    .meta-pair { margin-bottom:10px; }
+    .meta-label { display:block; font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.09em; color:var(--purple-main); margin-bottom:2px; }
+    .meta-value { font-size:.82rem; color:var(--text-main); line-height:1.6; }
+    .takeaway-block { margin-top:14px; padding:12px 14px; background:#f0ecff; border-radius:9px; border:1px solid #ddd5ff; }
+    .exec-label { font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.09em; color:var(--purple-main); margin-bottom:12px; }
+    .col-short { width:110px; }
+    .col-badge { width:190px; }
+    .table-wrap { overflow-x:auto; }
+    .key-finding-box { margin-top:18px; }
+    .key-finding-badge { display:inline-block; margin-bottom:8px; padding:2px 10px; border-radius:var(--radius-pill); background:var(--purple-bg-2); border:1px solid var(--purple-soft); font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#5a3db2; }
+    h3.signpost { margin-top:32px; margin-bottom:4px; font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.10em; color:var(--purple-main); border:none; }
+    /* File 3 extras */
+    .snapshot-grid { display:grid; gap:16px; grid-template-columns:1.4fr 1fr; }
+    @media (max-width:720px) { .snapshot-grid { grid-template-columns:1fr; } }
+    .snapshot-cell { background:#fafbff; border:1px solid var(--purple-bg); border-radius:10px; padding:14px 15px 12px; box-shadow:var(--shadow-card-inset); }
+    .snapshot-cell .cell-label { display:block; font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.10em; color:var(--purple-main); margin-bottom:5px; }
+    .verdict-bar { margin:10px 0 14px; padding:9px 14px; font-size:.78rem; font-style:italic; color:var(--purple-strong); background:#f0ecff; border-radius:8px; border:1px solid #ddd5ff; }
+    ol.ranked { counter-reset:ranked-counter; padding-left:0; list-style:none; margin:12px 0 18px; }
+    ol.ranked li { counter-increment:ranked-counter; display:flex; gap:14px; padding:12px 14px; margin-bottom:10px; background:#fafbff; border:1px solid #eceafd; border-radius:10px; font-size:.86rem; }
+    ol.ranked li::before { content:counter(ranked-counter); flex-shrink:0; width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#d4c5ff,#b5e4ff); display:flex; align-items:center; justify-content:center; font-size:.7rem; font-weight:700; color:#5a3db2; margin-top:2px; }
+    .rank-body { flex:1; }
+    .conf-label { font-size:.72rem; font-weight:600; color:var(--purple-strong); letter-spacing:.01em; margin:2px 0 8px; }
+    .mech-block { margin-bottom:18px; padding:14px 16px; border-radius:11px; background:#fafbff; border:1px solid #eceafd; }
+    .box-green { background:var(--mint-bg); border-color:#d7f1e5; border-left-color:var(--mint-strong); }
+    .box-yellow { background:var(--yellow-bg); border-color:#ffe9bf; border-left-color:var(--yellow-strong); }
+    .box-info { background:var(--blue-bg); border-color:#dbeffd; border-left-color:var(--purple-main); }
+    .box-purple { background:#f7f4ff; border-color:#e3dcff; border-left-color:var(--purple-main); }
+    .trace-block { margin-top:20px; padding:14px 16px; font-size:.79rem; line-height:1.75; color:var(--text-muted); background:#f8f7ff; border:1px dashed #cbc3ff; border-radius:12px; }
+    .doc-footer { margin-top:48px; padding-top:16px; text-align:center; border-top:1px solid #eee; }
+    .doc-footer .brand { font-size:.72rem; font-weight:600; letter-spacing:.05em; color:var(--purple-main); }
+    .doc-footer .sub { margin-top:2px; font-size:.62rem; letter-spacing:.02em; color:#b8bcc6; }
+    hr { border:none; border-top:1px solid #eee; margin:28px 0; }
+  </style>
+</head>
+<body>
+  <main class="report-container">
+<header class="report-header">
+      <div class="product-family">Scientific Evidence Dossier Series</div>
+      <h1>Scientific Evidence Dossier</h1>
+      <div class="subtitle">Premium evidence synthesis of tigecycline resistance mechanisms in Klebsiella pneumoniae, covering 13 articles, 113 extracted study entries, causal strength, recurrence, and decision-use limits.</div>
+      <div class="h1-underline"></div>
+      <div class="meta-strip">
+        <div class="meta-pill"><strong>Type</strong> <span>Corpus synthesis</span></div>
+        <div class="meta-pill"><strong>Source</strong> <span>13 articles / 113 extracted entries</span></div>
+        <div class="meta-pill"><strong>Focus</strong> <span>Tigecycline resistance mechanisms</span></div>
+      </div>
+    </header>
+    
+<section class="exec-snapshot">
+  <div class="summary-grid">
+    <div class="summary-cell">
+      <span class="cell-label">Executive verdict</span>
+      <p><strong>Scientific Evidence Dossier — Tigecycline Resistance in <em>Klebsiella pneumoniae</em></strong> supports one primary conclusion: the strongest and most decision-relevant signal in this corpus is the <strong>RamR loss-of-function → RamA derepression → AcrAB-TolC overexpression</strong> pathway. That mechanism carries the best combination of recurrence, causal testing, and quantitative effect. The rest of the landscape is real, but not equally mature: tet(A) variants and heteroresistance are secondary evidence streams, while several mobile-efflux and broader explanatory claims remain narrower or incomplete.</p>
+      <ul>
+        <li><strong>Strongest signal:</strong> six articles converge on the RamR–RamA–AcrAB-TolC axis, including direct knockout, complementation, knock-in, and inhibitor data.</li>
+        <li><strong>Biggest limitation:</strong> no in vivo validation appears anywhere in the corpus, and tmexCD1-toprJ1 lacks direct knockout/complementation confirmation.</li>
+        <li><strong>What to do next:</strong> use this dossier to prioritize mechanism credibility and fit-for-use boundaries, not to overextend field-wide or clinical claims.</li>
+      </ul>
+    </div>
+    <div class="summary-cell">
+      <span class="cell-label">Decision frame</span>
+      <p><strong>Core:</strong> chromosomal efflux regulation via RamR, RamA, and AcrAB-TolC.</p>
+      <p><strong>Secondary:</strong> tet(A) mutation-driven MIC shifts, tmexCD1-toprJ1-associated resistance, and stable tigecycline heteroresistance.</p>
+      <p><strong>Speculative or incomplete:</strong> additive multi-mechanism models, transmission narratives, and any claim that implies in vivo or clinical effectiveness beyond the underlying experiments.</p>
+    </div>
+  </div>
+</section>
+
+<h2>Executive Assessment</h2>
+<p>This dossier is strongest when read as a selective mechanism-ranking product rather than a broad narrative review. The corpus does <strong>not</strong> support treating all resistance signals as equal. The chromosomal RamR–RamA–AcrAB-TolC axis is the lead finding because it has the best replication across articles and the cleanest causal support. tet(A)-related effects and heteroresistance are credible but narrower. tmexCD1-toprJ1 is important, but its evidence remains more associative than experimentally closed.</p>
+
+<div class="highlight-box">
+  <div class="box-title">Primary conclusion</div>
+  <div class="box-body">For premium decision use, the dossier should be read with a strict evidence hierarchy: <strong>core causal mechanism first, secondary mechanistic contributors second, and proposed or incomplete models last</strong>.</div>
+</div>
+
+<div class="section-grid-2">
+  <div class="summary-cell">
+    <span class="cell-label">Highest-confidence findings</span>
+    <ul class="clean">
+      <li>RamR loss-of-function driving RamA/AcrAB-TolC upregulation and higher tigecycline MIC.</li>
+      <li>Efflux inhibition producing measurable susceptibility restoration in resistant isolates.</li>
+      <li>Direct genetic manipulation evidence concentrated in Articles 1, 4, 5, and 6.</li>
+    </ul>
+  </div>
+  <div class="summary-cell">
+    <span class="cell-label">Evidence boundaries</span>
+    <ul class="clean">
+      <li>No animal or in vivo validation across the corpus.</li>
+      <li>Replication and reporting quality are uneven outside the strongest mechanistic studies.</li>
+      <li>Several surveillance-led claims remain association-heavy rather than causally resolved.</li>
+    </ul>
+  </div>
+</div>
+
+    <hr/>
+<h2>MODULE A — CORPUS REGISTER</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Article Citation</th>
+<th>Pathogen / Condition</th>
+<th>Main AMR Determinant(s)</th>
+<th>Study Scope (1 sentence)</th>
+<th>Study Entries Extracted</th>
+<th>Dominant Experimental Models</th>
+<th>Article Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Wang SY et al. (2026) Chin Med J 139:469-471</td>
+<td>K. pneumoniae (ST23 hvKP)</td>
+<td>RamR T116I mutation → AcrAB-TolC derepression</td>
+<td>Characterizes a novel RamR T116I point mutation causing tigecycline resistance in paired ST23 hypervirulent K. pneumoniae clinical isolates from the same patient.</td>
+<td>9</td>
+<td>In vitro (complementation, CRISPR knock-in, qRT-PCR, proteomics, EMSA, AlphaFold3); genomic epidemiology</td>
+<td>Mechanistic</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Li Y et al. (2025) Front Cell Infect Microbiol 15:1540967</td>
+<td>K. pneumoniae (TRKP, multi-ST)</td>
+<td>ramR mutations, tet(A) variants, tmexCD-toprJ, acrB/ramA overexpression</td>
+<td>Investigates molecular epidemiological characteristics and resistance mechanisms of 30 tigecycline-resistant K. pneumoniae isolates from a hospital in southwest China.</td>
+<td>11</td>
+<td>In vitro (MIC, efflux pump inhibition with PAbN, qRT-PCR, PCR/sequencing); genomic epidemiology (MLST)</td>
+<td>Mixed (epidemiological + regulatory/expression-focused)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Chirabhundhu N et al. (2024) Sci Rep 14:5215</td>
+<td>K. pneumoniae (C-C-RKP)</td>
+<td>AcrAB-TolC (via ramR mutations), mutated Tet(A)</td>
+<td>Examines occurrence and mechanisms of tigecycline resistance in 240 carbapenem- and colistin-resistant K. pneumoniae from Thailand (2017–2021).</td>
+<td>10</td>
+<td>In vitro (MIC, CCCP efflux inhibition, qRT-PCR); WGS; ERIC-PCR typing; phylogeny</td>
+<td>Mixed (epidemiological + regulatory/expression-focused)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Xu Y et al. (2025) Microbiol Spectr 13(6):e03204-24</td>
+<td>K. pneumoniae (ATCC 43816)</td>
+<td>ramR novel mutation (g. 517_518 del)</td>
+<td>Identifies a novel ramR two-base-pair deletion causing tigecycline resistance through in vitro induction, knockout, complementation, and stability testing.</td>
+<td>6</td>
+<td>In vitro (MIC induction, CRISPR-Cas9 knockout, complementation, qRT-PCR, stability passage); homology modeling</td>
+<td>Mechanistic</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Xu Q et al. (2020) Int J Antimicrob Agents doi:10.1016/j.ijantimicag.2020.106251</td>
+<td>K. pneumoniae (KP22, ST11)</td>
+<td>ramA → AcrAB + OqxAB efflux pumps</td>
+<td>Demonstrates that RamA directly upregulates both AcrAB and OqxAB multidrug resistance efflux pumps in K. pneumoniae via knockout, complementation, and EMSA.</td>
+<td>7</td>
+<td>In vitro (gene knockout, complementation, qRT-PCR, EMSA, MIC)</td>
+<td>Mechanistic</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Zhao X et al. (2025) Microbiol Spectr 13(2):e01728-24</td>
+<td>K. pneumoniae (KP22)</td>
+<td>ramA → mlaFEDCB (membrane stability + resistance)</td>
+<td>Shows that RamA directly activates the mlaFEDCB operon, mediating moderate tetracycline-class resistance and membrane stability.</td>
+<td>6</td>
+<td>In vitro (RNA-seq, qRT-PCR, EMSA, MIC, SDS-EDTA sensitivity assay, CFU quantification)</td>
+<td>Mechanistic</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Xu J et al. (2021) Front Microbiol 12:644949</td>
+<td>K. pneumoniae (ST11 CRKP)</td>
+<td>Plasmid-borne tet(A) and tet(A) mutations</td>
+<td>Demonstrates that plasmid-borne tet(A) is an important factor in tigecycline resistance in ST11 CRKP under selective pressure, with in vitro evolution showing frequent tet(A) mutations.</td>
+<td>7</td>
+<td>In vitro (MIC, qRT-PCR, in vitro evolution, conjugation, transformation); WGS; phylogeny</td>
+<td>Mixed (mechanistic + molecular surveillance)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Xu C et al. (2025) Antibiotics 14:852</td>
+<td>K. pneumoniae (CRKP, pediatric)</td>
+<td>tet(A)-v1 on conjugative plasmids</td>
+<td>Characterizes molecular epidemiology of tet(A)-v1-positive CRKP in pediatric patients including plasmid diversity and conjugative transferability.</td>
+<td>8</td>
+<td>Genomic epidemiology (WGS, MLST, SNP analysis, plasmid typing); in vitro (AST, conjugation)</td>
+<td>Molecular surveillance / Genomics-focused</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Hirabayashi A et al. (2025) J Antimicrob Chemother 80:192-199</td>
+<td>K. pneumoniae (ST15)</td>
+<td>tmexCD1-toprJ1 (RND-type efflux pump gene cluster)</td>
+<td>Reports emergence of mobile tmexCD1-toprJ1 in two K. pneumoniae clinical isolates in Japan with detailed plasmid and mobile genetic element characterization.</td>
+<td>10</td>
+<td>Genomic epidemiology (BLAST screening, hybrid assembly, plasmid structure); in vitro (MIC, efflux pump inhibitor NMP, conjugation)</td>
+<td>Molecular surveillance / Genomics-focused</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Sun L et al. (2023) Microbiol Spectr 11(4):e05364-22</td>
+<td>K. pneumoniae (multi-source)</td>
+<td>tmexCD1-toprJ1</td>
+<td>Describes distribution and spread of tmexCD1-toprJ1 in K. pneumoniae from human, animal, and food sources in China.</td>
+<td>6</td>
+<td>Genomic epidemiology (PCR screening, WGS, hybrid assembly, phylogeny); in vitro (MIC, conjugation)</td>
+<td>Molecular surveillance</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Zheng L et al. (2025) Infect Drug Resist 18:6825-6834</td>
+<td>K. pneumoniae (ST17, clinical)</td>
+<td>tmexCD1-toprJ1 on IncFIB(Mar)/IncHI1B hybrid plasmids</td>
+<td>Investigates acquisition and nosocomial transmission of tmexCD1-toprJ1-positive plasmids in three ST17 clinical K. pneumoniae strains from two patients.</td>
+<td>8</td>
+<td>Genomic epidemiology (WGS, BRIG, SNP analysis, PCR screening); in vitro (AST, conjugation, growth curve)</td>
+<td>Mixed (molecular surveillance + epidemiological)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Zhang Q et al. (2025) Ann Clin Microbiol Antimicrob 24:53</td>
+<td>K. pneumoniae (MDR, clinical)</td>
+<td>ramR mutations (A19V, F48S, 15-aa insertion), acrR, rpsJ → AcrAB-TolC; heteroresistance</td>
+<td>Studies tigecycline heteroresistance associated with mutations arising during low-concentration tigecycline therapy, with in vitro evolution and time-kill experiments.</td>
+<td>12</td>
+<td>In vitro (MIC, PAP, qRT-PCR, growth curves, time-kill, Sanger sequencing, WGS); clinical (pre/post-treatment)</td>
+<td>Mixed (mechanistic + regulatory/expression-focused)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Tao X et al. (2026) Microbiol Spectr 14(2):e03079-25</td>
+<td>K. pneumoniae (CRKP, ST11)</td>
+<td>Tigecycline heteroresistance; tet(A), ramR/ramA, acrR (genomic)</td>
+<td>Provides phenotypic and genomic characterization of tigecycline heteroresistance in CRKP including stability, fitness cost, and resistance gene profiling.</td>
+<td>13</td>
+<td>In vitro (MIC, KB/E-test, PAP, growth kinetics, time-kill, MALDI-TOF); genomic (WGS, cgMLST, ResFinder)</td>
+<td>Mixed (genomics-focused + regulatory/expression-focused)</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>MODULE B — INTEGRATED EVIDENCE MATRIX</h2>
+<h3>B.1 Core Evidence Matrix</h3>
+<p>Due to the large number of study entries (113 total across 13 articles), the matrix below is organized by major mechanism/determinant grouping rather than individual experiment row. Individual experiment-level detail is preserved within each grouping.</p>
+<h4>B.1.1 RamR Mutation → ramA Derepression → AcrAB-TolC Overexpression</h4>
+<table>
+<thead>
+<tr>
+<th>Article</th>
+<th>Experiment ID</th>
+<th>Pathogen</th>
+<th>AMR Determinant</th>
+<th>Experimental Model</th>
+<th>Sample Size</th>
+<th>Effect Type</th>
+<th>Key Quantitative Result</th>
+<th>Comparator/Baseline</th>
+<th>Effect Direction</th>
+<th>Confidence</th>
+<th>Ambiguity Flag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art 1 (Wang)</td>
+<td>MIC__KP126_COMPLEMENTED</td>
+<td>K. pneumoniae ST23</td>
+<td>RamR T116I</td>
+<td>in vitro complementation</td>
+<td>NR</td>
+<td>MIC</td>
+<td>TGC MIC 4→1 µg/mL (4-fold ↓) with WT ramR</td>
+<td>KP126 parental (MIC 4 µg/mL)</td>
+<td>↓</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 1 (Wang)</td>
+<td>MIC__KP437_T116I_KNOCKIN</td>
+<td>K. pneumoniae</td>
+<td>RamR T116I</td>
+<td>CRISPR knock-in</td>
+<td>NR</td>
+<td>MIC</td>
+<td>TGC MIC 0.5→2 µg/mL (4-fold ↑) with T116I knock-in</td>
+<td>KP437 WT (MIC 0.5 µg/mL)</td>
+<td>↑</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 1 (Wang)</td>
+<td>GENE_EXPRESSION__RESISTANT_VS_SENSITIVE</td>
+<td>K. pneumoniae</td>
+<td>RamR T116I / ramA-acrB axis</td>
+<td>qRT-PCR</td>
+<td>3 bio + 3 tech replicates</td>
+<td>gene_expression</td>
+<td>ramA, acrB, ramR all upregulated (P &lt;0.001)</td>
+<td>Sensitive strains</td>
+<td>↑</td>
+<td>medium</td>
+<td>yes (fold-change values not numeric in text)</td>
+</tr>
+<tr>
+<td>Art 1 (Wang)</td>
+<td>BINDING__WT_VS_T116I_RAMR</td>
+<td>K. pneumoniae</td>
+<td>RamR T116I</td>
+<td>EMSA</td>
+<td>NR</td>
+<td>binding affinity</td>
+<td>WT RamR binds at 1:20 DNA:protein; T116I at 1:40</td>
+<td>WT RamR (KP124)</td>
+<td>↓</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 1 (Wang)</td>
+<td>PROTEOMICS__KP126_VS_KP124</td>
+<td>K. pneumoniae ST23</td>
+<td>RamR T116I / AcrAB-TolC</td>
+<td>DIA proteomics</td>
+<td>n=3/group</td>
+<td>gene_expression</td>
+<td>AcrAB-TolC and RamA upregulated at protein level</td>
+<td>KP124 proteome</td>
+<td>↑</td>
+<td>medium</td>
+<td>yes (fold-changes in figure only)</td>
+</tr>
+<tr>
+<td>Art 2 (Li)</td>
+<td>MIC__TRKP_ISOLATES__PABN</td>
+<td>K. pneumoniae (30 TRKP)</td>
+<td>Efflux pump activity</td>
+<td>MIC ± PAbN</td>
+<td>30</td>
+<td>MIC</td>
+<td>96.6% (29/30) restored sensitivity with PAbN</td>
+<td>TGC MIC without PAbN</td>
+<td>↓</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 2 (Li)</td>
+<td>GENE_EXPRESSION__TRKP_ISOLATES</td>
+<td>K. pneumoniae (30 TRKP)</td>
+<td>acrB, ramA</td>
+<td>qRT-PCR</td>
+<td>30</td>
+<td>gene_expression</td>
+<td>22/30 had acrB overexpression (5.49–48.49-fold); ramA overexpression (3.88–23.77-fold)</td>
+<td>K. pneumoniae ATCC 13883</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 2 (Li)</td>
+<td>MUTATION_CHARACTERIZATION__RAMR</td>
+<td>K. pneumoniae (30 TRKP)</td>
+<td>ramR mutations</td>
+<td>PCR/sequencing</td>
+<td>25/30 with ramR detected</td>
+<td>N/A</td>
+<td>Diverse ramR mutations: deletions, frameshifts, substitutions, truncations</td>
+<td>WT ramR sequence</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 3 (Chirabhundhu)</td>
+<td>MIC__TGC_RESISTANT__CCCP</td>
+<td>K. pneumoniae C-C-RKP</td>
+<td>Efflux pump activity</td>
+<td>MIC ± CCCP</td>
+<td>57</td>
+<td>MIC</td>
+<td>29/57 showed ≥4-fold MIC reduction with CCCP</td>
+<td>TGC MIC without CCCP</td>
+<td>↓</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 3 (Chirabhundhu)</td>
+<td>GENE_EXPRESSION__EFFLUX_POSITIVE</td>
+<td>K. pneumoniae C-C-RKP</td>
+<td>acrB, ramA</td>
+<td>qRT-PCR</td>
+<td>29 (efflux-positive)</td>
+<td>gene_expression</td>
+<td>acrB 1.2–8.1-fold; ramA 1.9–24.9-fold upregulated</td>
+<td>ATCC 13883</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 3 (Chirabhundhu)</td>
+<td>GENE_EXPRESSION__HIGH_VS_LOW</td>
+<td>K. pneumoniae C-C-RKP</td>
+<td>acrB</td>
+<td>Mann-Whitney</td>
+<td>NR</td>
+<td>gene_expression</td>
+<td>acrB significantly increased in high-level group (P=0.0002)</td>
+<td>Low-level TGC resistant group</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 3 (Chirabhundhu)</td>
+<td>MUTATIONS__15_EFFLUX_POSITIVE</td>
+<td>K. pneumoniae C-C-RKP</td>
+<td>RamR mutations (frameshifts, point mutations)</td>
+<td>WGS</td>
+<td>15</td>
+<td>N/A</td>
+<td>C-nucleotide insertion at position 99/100 → frameshift → premature stop</td>
+<td>ATCC 13883</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 4 (Xu Y)</td>
+<td>MIC__INDUCED_STRAINS</td>
+<td>K. pneumoniae ATCC 43816</td>
+<td>ramR (g. 517_518 del)</td>
+<td>in vitro induction</td>
+<td>NR</td>
+<td>MIC</td>
+<td>TGC MIC increased from 1 to 8–32 mg/L after induction</td>
+<td>ATCC 43816 WT (MIC 1 mg/L)</td>
+<td>↑</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 4 (Xu Y)</td>
+<td>MIC__KNOCKOUT_AND_COMPLEMENT</td>
+<td>K. pneumoniae ATCC 43816</td>
+<td>ramR knockout</td>
+<td>CRISPR-Cas9 KO + complementation</td>
+<td>NR</td>
+<td>MIC</td>
+<td>ΔramR: MIC 8 mg/L (8-fold ↑); complemented: restored to 1 mg/L</td>
+<td>ATCC 43816 WT (MIC 1 mg/L)</td>
+<td>↑/↓</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 4 (Xu Y)</td>
+<td>MIC_STABILITY__200_GEN</td>
+<td>K. pneumoniae ATCC 43816</td>
+<td>ramR mutation stability</td>
+<td>Serial passage (200 gen)</td>
+<td>NR</td>
+<td>MIC</td>
+<td>ramR-mutated strain retained MIC 8 mg/L; unmutated reverted to 1 mg/L</td>
+<td>Pre-passage MICs</td>
+<td>↔ (mutant) / ↓ (unmutated)</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 5 (Xu Q)</td>
+<td>MIC__KP22_RAMR_COMPLEMENTATION</td>
+<td>K. pneumoniae KP22 (ST11)</td>
+<td>ramR R108stop</td>
+<td>ramR complementation</td>
+<td>NR</td>
+<td>MIC</td>
+<td>TGC MIC 8→2 mg/L with WT ramR</td>
+<td>KP22 (MIC 8 mg/L)</td>
+<td>↓</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 5 (Xu Q)</td>
+<td>MIC__KP22_DELTA_RAMA</td>
+<td>K. pneumoniae KP22</td>
+<td>ramA deletion</td>
+<td>ramA KO</td>
+<td>NR</td>
+<td>MIC</td>
+<td>TGC MIC 8→0.5 mg/L (16-fold ↓)</td>
+<td>KP22 (MIC 8 mg/L)</td>
+<td>↓</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 5 (Xu Q)</td>
+<td>MIC__KP22_DELTA_ACRB</td>
+<td>K. pneumoniae KP22</td>
+<td>acrB deletion</td>
+<td>acrB KO</td>
+<td>NR</td>
+<td>MIC</td>
+<td>TGC MIC 8→0.5 mg/L (16-fold ↓)</td>
+<td>KP22 (MIC 8 mg/L)</td>
+<td>↓</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 5 (Xu Q)</td>
+<td>GENE_EXPRESSION__KP22_VS_ATCC</td>
+<td>K. pneumoniae KP22</td>
+<td>ramA, oqxB</td>
+<td>qRT-PCR</td>
+<td>NR</td>
+<td>gene_expression</td>
+<td>ramA 168.7-fold; oqxB 10.7-fold overexpressed</td>
+<td>ATCC 13883</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 5 (Xu Q)</td>
+<td>BINDING__RAMA__ACRAB_OQXAB</td>
+<td>K. pneumoniae</td>
+<td>RamA → acrAB and oqxAB promoters</td>
+<td>EMSA</td>
+<td>NR</td>
+<td>binding</td>
+<td>RamA bound promoters of both acrAB and oqxAB operons</td>
+<td>DNA-only control + marR negative control</td>
+<td>↑</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 12 (Zhang)</td>
+<td>GENE_EXPRESSION__CLINICAL</td>
+<td>K. pneumoniae (clinical pairs)</td>
+<td>ramR (A19V, F48S) → AcrAB-TolC</td>
+<td>qRT-PCR</td>
+<td>4 strains</td>
+<td>gene_expression</td>
+<td>Overexpression of acrA, acrB, tolC, ramA in resistant isolates</td>
+<td>Susceptible paired isolates</td>
+<td>↑</td>
+<td>medium</td>
+<td>yes (values in figure only)</td>
+</tr>
+<tr>
+<td>Art 12 (Zhang)</td>
+<td>MIC__SUBPOPULATIONS_PABN</td>
+<td>K. pneumoniae</td>
+<td>AcrAB-TolC</td>
+<td>MIC ± PAbN</td>
+<td>6 subpopulations</td>
+<td>MIC</td>
+<td>8-fold to 32-fold reduction with PAbN</td>
+<td>MIC without PAbN</td>
+<td>↓</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h4>B.1.2 RamA → mlaFEDCB (Membrane Stability Pathway)</h4>
+<table>
+<thead>
+<tr>
+<th>Article</th>
+<th>Experiment ID</th>
+<th>Pathogen</th>
+<th>AMR Determinant</th>
+<th>Experimental Model</th>
+<th>Effect Type</th>
+<th>Key Result</th>
+<th>Comparator</th>
+<th>Direction</th>
+<th>Confidence</th>
+<th>Ambiguity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art 6 (Zhao)</td>
+<td>TRANSCRIPTOME__KP22_WT_VS_RAMA_KO</td>
+<td>K. pneumoniae KP22</td>
+<td>ramA → mlaFEDCB</td>
+<td>RNA-seq</td>
+<td>gene_expression</td>
+<td>~4-fold decrease in mla genes in ΔramA</td>
+<td>KP22 WT</td>
+<td>↓</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 6 (Zhao)</td>
+<td>GENE_EXPRESSION__KP22_WT_VS_RAMA_KO</td>
+<td>K. pneumoniae KP22</td>
+<td>ramA → mlaE</td>
+<td>qRT-PCR</td>
+<td>gene_expression</td>
+<td>mlaE 5-fold higher in WT vs ΔramA</td>
+<td>KP22ΔramA</td>
+<td>↑</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 6 (Zhao)</td>
+<td>BINDING__RAMA_VS_MLAE_PROMOTER</td>
+<td>K. pneumoniae KP22</td>
+<td>RamA → mlaFEDCB promoter</td>
+<td>EMSA</td>
+<td>binding</td>
+<td>RamA directly binds mlaFEDCB promoter</td>
+<td>Unbound DNA control</td>
+<td>↑</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 6 (Zhao)</td>
+<td>MIC__KP22_KNOCKOUTS</td>
+<td>K. pneumoniae KP22</td>
+<td>mlaE / ramA</td>
+<td>MIC</td>
+<td>MIC</td>
+<td>ΔmlaE: TGC MIC 4-fold ↓; doxycycline/minocycline/eravacycline 2-fold ↓</td>
+<td>KP22 WT (TGC MIC 8 µg/mL)</td>
+<td>↓</td>
+<td>high</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 6 (Zhao)</td>
+<td>SDS_EDTA_SENSITIVITY</td>
+<td>K. pneumoniae KP22</td>
+<td>ramA / mlaE</td>
+<td>spot dilution</td>
+<td>membrane sensitivity</td>
+<td>ΔramA and ΔmlaE more sensitive to SDS-EDTA</td>
+<td>KP22 WT</td>
+<td>↓</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h4>B.1.3 tet(A) and tet(A) Variants / Mutations</h4>
+<table>
+<thead>
+<tr>
+<th>Article</th>
+<th>Experiment ID</th>
+<th>Pathogen</th>
+<th>AMR Determinant</th>
+<th>Experimental Model</th>
+<th>Effect Type</th>
+<th>Key Result</th>
+<th>Comparator</th>
+<th>Direction</th>
+<th>Confidence</th>
+<th>Ambiguity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art 2 (Li)</td>
+<td>MUTATION_CHARACTERIZATION__TETA</td>
+<td>K. pneumoniae (30 TRKP)</td>
+<td>tet(A) type 1, type 3</td>
+<td>PCR/sequencing</td>
+<td>prevalence</td>
+<td>19/30 (63.3%) carried tet(A) variants</td>
+<td>All TRKP isolates</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 3 (Chirabhundhu)</td>
+<td>TETA_DETECTION__ST147</td>
+<td>K. pneumoniae ST147</td>
+<td>Mutated Tet(A)</td>
+<td>WGS/PCR</td>
+<td>MIC</td>
+<td>TGC MIC 8 µg/mL in Tet(A)-mutant isolates</td>
+<td>WT Tet(A)</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 7 (Xu J)</td>
+<td>MIC_DISTRIBUTION__63_CRKP</td>
+<td>K. pneumoniae ST11</td>
+<td>tet(A) (wild-type)</td>
+<td>MIC distribution</td>
+<td>prevalence</td>
+<td>52.4% carried WT tet(A); tet(A)+ had ~2-fold higher TGC MIC</td>
+<td>tet(A)-negative isolates</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 7 (Xu J)</td>
+<td>MUTATION_RATE__33_TETA</td>
+<td>K. pneumoniae ST11</td>
+<td>tet(A) mutations (evolution)</td>
+<td>in vitro evolution (2 weeks)</td>
+<td>MIC</td>
+<td>28/33 (84.8%) evolved TGC resistance (MIC ≥32 mg/L); 71.4% had tet(A) mutations</td>
+<td>Parental WT tet(A) MIC</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 7 (Xu J)</td>
+<td>MIC__EC600_TRANSCONJUGANTS</td>
+<td>K. pneumoniae</td>
+<td>tet(A) mutants vs WT</td>
+<td>conjugation to EC600</td>
+<td>MIC</td>
+<td>Mutant tet(A) transconjugants: 2- to 8-fold higher TGC MIC</td>
+<td>EC600 with WT tet(A)</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 7 (Xu J)</td>
+<td>MIC__DH5A_TRANSFORMANTS</td>
+<td>K. pneumoniae</td>
+<td>tet(A) mutants A264V, A370V, G300V, A53G</td>
+<td>transformation to DH5α</td>
+<td>MIC</td>
+<td>2- to 4-fold TGC MIC increase</td>
+<td>DH5α with WT tet(A)</td>
+<td>↑</td>
+<td>low</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 8 (Xu C)</td>
+<td>RESISTANCE_PROFILE__TETA_V1</td>
+<td>K. pneumoniae CRKP (pediatric)</td>
+<td>tet(A)-v1</td>
+<td>AST</td>
+<td>prevalence</td>
+<td>8/73 (10.96%) non-susceptible to TGC</td>
+<td>73 tet(A)-v1+ CRKP</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 8 (Xu C)</td>
+<td>TRANSFER_FREQUENCY</td>
+<td>K. pneumoniae CRKP</td>
+<td>tet(A)-v1 plasmids</td>
+<td>conjugation</td>
+<td>transfer</td>
+<td>68.49% transferred tet(A)-v1 plasmid to E. coli</td>
+<td>73 isolates as donors</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 8 (Xu C)</td>
+<td>PLASMID_DIVERSITY</td>
+<td>K. pneumoniae CRKP</td>
+<td>tet(A)-v1</td>
+<td>genomic analysis</td>
+<td>prevalence</td>
+<td>14 unique plasmid types (51–315 Kb)</td>
+<td>73 isolates</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h4>B.1.4 tmexCD-toprJ (Mobile RND Efflux Pump)</h4>
+<table>
+<thead>
+<tr>
+<th>Article</th>
+<th>Experiment ID</th>
+<th>Pathogen</th>
+<th>AMR Determinant</th>
+<th>Experimental Model</th>
+<th>Effect Type</th>
+<th>Key Result</th>
+<th>Comparator</th>
+<th>Direction</th>
+<th>Confidence</th>
+<th>Ambiguity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art 9 (Hirabayashi)</td>
+<td>PREVALENCE__ENTEROBACTERALES</td>
+<td>K. pneumoniae (ST15)</td>
+<td>tmexCD1-toprJ1</td>
+<td>BLAST screening</td>
+<td>prevalence</td>
+<td>2/5143 (0.039%) positive</td>
+<td>5143 Enterobacterales</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 9 (Hirabayashi)</td>
+<td>MIC__TWO_KP__NMP</td>
+<td>K. pneumoniae</td>
+<td>tmexCD1-toprJ1</td>
+<td>MIC ± NMP</td>
+<td>MIC</td>
+<td>TGC MIC decreased to ≤0.25 mg/L with NMP</td>
+<td>Without NMP: 2 and 1 mg/L</td>
+<td>↓</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 9 (Hirabayashi)</td>
+<td>TRANSFERABILITY__J53</td>
+<td>K. pneumoniae</td>
+<td>tmexCD1-toprJ1 plasmids</td>
+<td>conjugation</td>
+<td>transfer</td>
+<td>No transfer to E. coli J53</td>
+<td>E. coli J53 recipient</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 10 (Sun)</td>
+<td>PREVALENCE__MULTI_SOURCE</td>
+<td>K. pneumoniae (multi-source)</td>
+<td>tmexCD1-toprJ1</td>
+<td>PCR screening</td>
+<td>prevalence</td>
+<td>9 positive strains (human n=1, animal n=6, food n=2)</td>
+<td>All screened samples</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 10 (Sun)</td>
+<td>MIC__TMEXCD1_POSITIVE</td>
+<td>K. pneumoniae</td>
+<td>tmexCD1-toprJ1</td>
+<td>MIC</td>
+<td>MIC</td>
+<td>TGC MIC ≥4 mg/liter in all 9</td>
+<td>EUCAST breakpoint</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 10 (Sun)</td>
+<td>TRANSFERABILITY__C600</td>
+<td>K. pneumoniae</td>
+<td>tmexCD1-toprJ1</td>
+<td>conjugation</td>
+<td>transfer</td>
+<td>Only 1/9 strains transferred</td>
+<td>E. coli C600 recipient</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 10 (Sun)</td>
+<td>GENETIC_CONTEXT</td>
+<td>K. pneumoniae</td>
+<td>tmexCD1-toprJ1</td>
+<td>WGS</td>
+<td>genomic</td>
+<td>Plasmid-borne (8/9) and chromosomal (1/9); conserved 24,087-bp core structure</td>
+<td>Reference plasmids</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 11 (Zheng)</td>
+<td>MIC__CLINICAL_AND_TRANSCONJUGANTS</td>
+<td>K. pneumoniae ST17</td>
+<td>tmexCD1-toprJ1</td>
+<td>AST</td>
+<td>MIC</td>
+<td>HD9932 TGC 16 mg/L; transconjugant TGC 4 mg/L</td>
+<td>HD9931 TGC ≤0.25 mg/L (no tmexCD)</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 11 (Zheng)</td>
+<td>TRANSFER_FREQUENCY__CONJUGATION</td>
+<td>K. pneumoniae ST17</td>
+<td>tmexCD1-toprJ1</td>
+<td>conjugation</td>
+<td>transfer</td>
+<td>pHD9932-2: 1.1×10⁻⁶; pHD10868-2: 1.4×10⁻⁶</td>
+<td>Per donor cell</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 11 (Zheng)</td>
+<td>GROWTH_RATE__SIX_STRAINS</td>
+<td>K. pneumoniae ST17</td>
+<td>tmexCD1-toprJ1</td>
+<td>growth curve</td>
+<td>fitness</td>
+<td>No significant growth rate difference</td>
+<td>All six strains compared</td>
+<td>↔</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h4>B.1.5 Tigecycline Heteroresistance</h4>
+<table>
+<thead>
+<tr>
+<th>Article</th>
+<th>Experiment ID</th>
+<th>Pathogen</th>
+<th>AMR Determinant</th>
+<th>Experimental Model</th>
+<th>Effect Type</th>
+<th>Key Result</th>
+<th>Comparator</th>
+<th>Direction</th>
+<th>Confidence</th>
+<th>Ambiguity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art 12 (Zhang)</td>
+<td>HETERORESISTANCE__EVOLVED</td>
+<td>K. pneumoniae (clinical)</td>
+<td>Multiple ramR mutations</td>
+<td>In vitro evolution + PAP</td>
+<td>prevalence</td>
+<td>1/8 colonies per parental strain showed heteroresistance at 0.1 mg/L TGC</td>
+<td>Parental susceptible</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 12 (Zhang)</td>
+<td>MIC__STABILITY__7DAY</td>
+<td>K. pneumoniae</td>
+<td>Heteroresistant phenotype</td>
+<td>Serial passage (7d, no TGC)</td>
+<td>MIC</td>
+<td>All 6 subpopulations retained unsusceptible MIC after 7 days</td>
+<td>Pre-passage MIC</td>
+<td>↔</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 12 (Zhang)</td>
+<td>GROWTH_RATE__ALL</td>
+<td>K. pneumoniae</td>
+<td>Heteroresistance</td>
+<td>Growth curve</td>
+<td>fitness</td>
+<td>No significant differences</td>
+<td>Susceptible vs heteroresistant vs resistant</td>
+<td>↔</td>
+<td>low</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 13 (Tao)</td>
+<td>PREVALENCE__52_CRKP</td>
+<td>K. pneumoniae CRKP (ST11)</td>
+<td>Heteroresistance</td>
+<td>PAP screening</td>
+<td>prevalence</td>
+<td>2/52 (3.85%) confirmed heteroresistant</td>
+<td>52 CRKP isolates</td>
+<td>N/A</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 13 (Tao)</td>
+<td>MIC__PARENT_VS_SUBCLONES</td>
+<td>K. pneumoniae CRKP</td>
+<td>Heteroresistance</td>
+<td>MIC</td>
+<td>MIC</td>
+<td>Parent TGC 1 µg/mL (S); subclone ≥8 µg/mL (R)</td>
+<td>Parent strains</td>
+<td>↑</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 13 (Tao)</td>
+<td>STABILITY__15DAY</td>
+<td>K. pneumoniae CRKP</td>
+<td>Heteroresistance</td>
+<td>PAP retest (15d)</td>
+<td>MIC</td>
+<td>MIC 16 mg/L stable at day 1, 7, 15</td>
+<td>Parent MIC 0.5 mg/L</td>
+<td>↔</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 13 (Tao)</td>
+<td>GROWTH_KINETICS</td>
+<td>K. pneumoniae CRKP</td>
+<td>Heteroresistance</td>
+<td>Growth curve (OD620)</td>
+<td>fitness</td>
+<td>μmax −8.29% (RJ30 pair); AUC −12.33%; comparable kinetics</td>
+<td>Parent strains</td>
+<td>↔</td>
+<td>medium</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Art 13 (Tao)</td>
+<td>TIME_KILL</td>
+<td>K. pneumoniae CRKP</td>
+<td>Heteroresistance</td>
+<td>Time-kill (4× MIC TGC, 48h)</td>
+<td>CFU</td>
+<td>30–40% reduction at 6h then regrowth</td>
+<td>E. coli ATCC 25922 (killed within 12h)</td>
+<td>↓ then ↑</td>
+<td>medium</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h3>B.2 Cross-Study Consistencies (≥2 articles supporting same exact statement)</h3>
+<ol>
+<li><p><strong>ramR mutations (loss-of-function) lead to ramA upregulation and consequent AcrAB-TolC overexpression, increasing tigecycline MIC</strong> — Multi-study supported. Support count: 6 articles (Art 1, 2, 3, 4, 5, 12). Multiple study_entries across these articles demonstrate this via complementation, knockout, qRT-PCR, EMSA, and efflux pump inhibition. Status: <strong>Multi-study supported</strong>.</p>
+</li>
+<li><p><strong>Efflux pump inhibitors (PAbN or CCCP) restore tigecycline susceptibility in resistant isolates</strong> — Multi-study supported. Support count: 3 articles (Art 2: 96.6% with PAbN; Art 3: 29/57 ≥4-fold with CCCP; Art 12: 8–32-fold with PAbN). Status: <strong>Multi-study supported</strong>. Note: different inhibitors (PAbN vs CCCP) used across studies; heterogeneity in extent of restoration.</p>
+</li>
+<li><p><strong>acrB and ramA are upregulated in tigecycline-resistant K. pneumoniae compared to susceptible reference strains (ATCC 13883 or paired sensitive isolates)</strong> — Multi-study supported. Support count: 5 articles (Art 1, 2, 3, 5, 12). Status: <strong>Multi-study supported</strong>.</p>
+</li>
+<li><p><strong>tet(A) mutations evolved under tigecycline selective pressure increase tigecycline MIC</strong> — Multi-study supported. Support count: 2 articles (Art 7: in vitro evolution, conjugation, transformation; Art 3: WGS detection of mutated Tet(A) in clinical isolates). Partial heterogeneity: Art 7 uses in vitro evolution model; Art 3 detects clinical isolates. Status: <strong>Multi-study supported</strong> (partial recurrence — same effect direction, slightly different evidence types).</p>
+</li>
+<li><p><strong>tmexCD1-toprJ1 is plasmid-borne (predominantly), associated with IncFIB(Mar)/IncHI1B hybrid plasmids, and confers tigecycline resistance</strong> — Multi-study supported. Support count: 3 articles (Art 9, 10, 11). Status: <strong>Multi-study supported</strong>.</p>
+</li>
+<li><p><strong>Tigecycline heteroresistance phenotype is stable (persists after passage in antibiotic-free medium) and does not impose significant fitness cost</strong> — Multi-study supported. Support count: 2 articles (Art 12: 7-day stability, no fitness cost; Art 13: 15-day stability, comparable growth kinetics). Status: <strong>Multi-study supported</strong>.</p>
+</li>
+<li><p><strong>Wild-type tet(A) carriage is associated with increased tigecycline MIC</strong> — Single-study supported. Support count: 1 article (Art 7). Art 2 and Art 3 report tet(A) detection but Art 2 does not test WT tet(A) MIC contribution independently and Art 3 focuses on mutated Tet(A). Status: <strong>Single-study supported</strong> for the specific claim about WT tet(A) MIC elevation.</p>
+</li>
+</ol>
+<h3>B.3 Cross-Study Contradictions</h3>
+<ol>
+<li><p><strong>Conjugative transferability of tmexCD1-toprJ1 plasmids</strong>: Art 9 reports no transfer to E. coli J53 for either plasmid; Art 10 reports only 1/9 transferred; Art 11 reports successful transfer for both plasmids tested (transfer frequency ~10⁻⁶). This likely reflects plasmid-specific differences rather than a true contradiction, but heterogeneity is notable.</p>
+</li>
+<li><p><strong>Extent of efflux pump inhibitor restoration</strong>: Art 2 reports 96.6% of isolates restored sensitivity with PAbN; Art 3 reports 29/57 (50.9%) showed ≥4-fold reduction with CCCP. Different inhibitors, different thresholds, and different resistance contexts.</p>
+</li>
+</ol>
+<h3>B.4 Heterogeneity Notes</h3>
+<ul>
+<li><strong>Comparators/baselines differ</strong>: Art 1 uses paired clinical isolates; Art 2, 3, 5, 7 use ATCC 13883; Art 4 uses ATCC 43816; Art 12 uses paired pre/post-treatment isolates.</li>
+<li><strong>Efflux pump inhibitors differ</strong>: PAbN (Art 2, 12), CCCP (Art 3), NMP (Art 9).</li>
+<li><strong>Models differ</strong>: Clinical isolates (Art 1, 2, 3, 11, 12, 13), ATCC reference strains (Art 4, 5, 6), database surveys (Art 1, 8, 9, 10).</li>
+<li><strong>Effect types differ</strong>: MIC change, gene expression fold-change, binding affinity, prevalence, transfer frequency, fitness cost — not directly comparable.</li>
+<li><strong>Confidence levels vary</strong>: Art 1/4/5/6 have high-confidence mechanistic experiments; Art 2/3/8/13 are medium-confidence observational/descriptive.</li>
+</ul>
+<h3>B.5 Recurrence Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Mechanism / Effect</th>
+<th>Articles</th>
+<th>Support Count (articles)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ramR loss-of-function → ramA ↑ → AcrAB-TolC ↑ → TGC MIC ↑</td>
+<td>Art 1, 2, 3, 4, 5, 12</td>
+<td>6</td>
+<td>Multi-study supported</td>
+</tr>
+<tr>
+<td>Efflux pump inhibitor restores TGC susceptibility</td>
+<td>Art 2, 3, 12</td>
+<td>3</td>
+<td>Multi-study supported</td>
+</tr>
+<tr>
+<td>acrB + ramA upregulation in TGC-R vs TGC-S</td>
+<td>Art 1, 2, 3, 5, 12</td>
+<td>5</td>
+<td>Multi-study supported</td>
+</tr>
+<tr>
+<td>tet(A) mutations → increased TGC MIC</td>
+<td>Art 3, 7</td>
+<td>2</td>
+<td>Multi-study supported</td>
+</tr>
+<tr>
+<td>tmexCD1-toprJ1 plasmid-borne, confers TGC resistance</td>
+<td>Art 9, 10, 11</td>
+<td>3</td>
+<td>Multi-study supported</td>
+</tr>
+<tr>
+<td>Heteroresistance stable + no fitness cost</td>
+<td>Art 12, 13</td>
+<td>2</td>
+<td>Multi-study supported</td>
+</tr>
+<tr>
+<td>RamA directly binds acrAB promoter</td>
+<td>Art 5, 6 (Art 5: EMSA for acrAB; Art 6: EMSA for mlaFEDCB only)</td>
+<td>1 for acrAB specifically</td>
+<td>Single-study supported (Art 5 only for acrAB binding)</td>
+</tr>
+<tr>
+<td>RamA directly binds oqxAB promoter</td>
+<td>Art 5</td>
+<td>1</td>
+<td>Single-study supported</td>
+</tr>
+<tr>
+<td>RamA directly binds mlaFEDCB promoter</td>
+<td>Art 6</td>
+<td>1</td>
+<td>Single-study supported</td>
+</tr>
+<tr>
+<td>RamR T116I reduces RamR–ramA promoter binding affinity (EMSA)</td>
+<td>Art 1</td>
+<td>1</td>
+<td>Single-study supported</td>
+</tr>
+<tr>
+<td>ramR mutation stable across 200 generations</td>
+<td>Art 4</td>
+<td>1</td>
+<td>Single-study supported</td>
+</tr>
+<tr>
+<td>Wild-type tet(A) alone contributes ~2-fold TGC MIC increase</td>
+<td>Art 7</td>
+<td>1</td>
+<td>Single-study supported</td>
+</tr>
+<tr>
+<td>tet(A)-v1 on diverse conjugative plasmids in pediatric CRKP</td>
+<td>Art 8</td>
+<td>1</td>
+<td>Single-study supported</td>
+</tr>
+<tr>
+<td>IS26-mediated mobilization of tmexCD1-toprJ1</td>
+<td>Art 10</td>
+<td>1</td>
+<td>Single-study supported</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>MODULE C — METHODOLOGICAL QUALITY APPRAISAL</h2>
+<h3>C.1 Per-Article Appraisal</h3>
+<table>
+<thead>
+<tr>
+<th>Article</th>
+<th>Model Appropriateness</th>
+<th>Mechanistic Testing</th>
+<th>Comparator Clarity</th>
+<th>Quantitative Outcome Clarity</th>
+<th>Replication Clarity</th>
+<th>Triangulation</th>
+<th>Internal Consistency</th>
+<th>Author-Stated Limitations</th>
+<th>Overall Robustness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art 1 (Wang)</td>
+<td>High (paired clinical isolates from same patient)</td>
+<td>Direct manipulation (complementation, CRISPR knock-in, EMSA) + associative (qRT-PCR, proteomics, AlphaFold3)</td>
+<td>Clear (KP124 vs KP126)</td>
+<td>Medium (some values in figures only)</td>
+<td>Partially reported (3 bio + 3 tech for qRT-PCR; others NR)</td>
+<td>Strong (genomics + expression + proteomics + binding + structural)</td>
+<td>Good; potential typo in conclusion ("repression of ramR" vs "ramA")</td>
+<td>Genetic modification difficulty necessitated use of KP437</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>Art 2 (Li)</td>
+<td>Adequate (single-center epidemiological)</td>
+<td>Associative only (no knockout/complementation)</td>
+<td>Adequate (ATCC 13883 reference)</td>
+<td>Medium (MIC and expression values reported)</td>
+<td>Not clearly reported</td>
+<td>None (no functional validation)</td>
+<td>Internal inconsistency: death rate 37.7% vs 36.7%</td>
+<td>None explicitly stated</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>Art 3 (Chirabhundhu)</td>
+<td>High (large sample, multi-year)</td>
+<td>Mixed (efflux inhibition + qRT-PCR + WGS; no KO)</td>
+<td>Adequate (ATCC 13883)</td>
+<td>Good (MIC fold-changes, expression ranges, P-values)</td>
+<td>Not clearly reported</td>
+<td>Moderate (efflux inhibition + expression + mutation analysis)</td>
+<td>Good</td>
+<td>Not explicitly stated</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Art 4 (Xu Y)</td>
+<td>High (induction + KO + complementation + stability)</td>
+<td>Direct manipulation (CRISPR-Cas9 KO, complementation, in vitro evolution)</td>
+<td>Clear (WT vs induced vs KO vs complemented)</td>
+<td>Medium (some expression values in figures only)</td>
+<td>"At least three independent experiments" stated</td>
+<td>Good (MIC + expression + stability + structural modeling)</td>
+<td>Good</td>
+<td>None explicitly stated</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Art 5 (Xu Q)</td>
+<td>High (systematic KO + complementation of each component)</td>
+<td>Direct manipulation (multiple KOs, complementation, EMSA)</td>
+<td>Clear (KP22 vs ATCC 13883; each KO vs parent)</td>
+<td>Good (MIC values, fold-changes reported)</td>
+<td>Not clearly reported for MIC</td>
+<td>Strong (KO + complementation + expression + direct binding)</td>
+<td>Good</td>
+<td>None explicitly stated</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Art 6 (Zhao)</td>
+<td>High (RNA-seq + qRT-PCR + EMSA + phenotypic)</td>
+<td>Direct manipulation (KO, complementation, EMSA)</td>
+<td>Clear (WT vs ΔramA vs ΔmlaE vs complemented)</td>
+<td>Good</td>
+<td>"Three independent experiments" for SDS-EDTA</td>
+<td>Strong (transcriptomics + qRT-PCR + binding + MIC + membrane phenotype)</td>
+<td>Good</td>
+<td>None explicitly stated</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Art 7 (Xu J)</td>
+<td>High (evolution model + conjugation + transformation)</td>
+<td>Mixed (in vitro evolution + conjugation/transformation + expression)</td>
+<td>Adequate (parental vs evolved; WT vs mutant tet(A))</td>
+<td>Good</td>
+<td>Not clearly reported</td>
+<td>Moderate (MIC + expression + evolution + genomics)</td>
+<td>Good</td>
+<td>None explicitly stated</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>Art 8 (Xu C)</td>
+<td>Adequate (molecular epidemiology)</td>
+<td>No direct mechanistic testing</td>
+<td>Adequate (CLSI breakpoints)</td>
+<td>Good (prevalence, transfer rates)</td>
+<td>Not clearly reported</td>
+<td>None (no functional validation)</td>
+<td>Good</td>
+<td>Not explicitly stated</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>Art 9 (Hirabayashi)</td>
+<td>Adequate (genomic surveillance)</td>
+<td>No direct mechanistic testing (NMP efflux inhibition only)</td>
+<td>Adequate (CLSI/EUCAST breakpoints)</td>
+<td>Good</td>
+<td>Not clearly reported</td>
+<td>Moderate (AST + NMP + genomics + conjugation)</td>
+<td>Good</td>
+<td>None explicitly stated</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Art 10 (Sun)</td>
+<td>Adequate (multi-source surveillance)</td>
+<td>No direct mechanistic testing</td>
+<td>Adequate (EUCAST breakpoints)</td>
+<td>Good (MIC, prevalence counts)</td>
+<td>Not clearly reported</td>
+<td>Limited (MIC + genomics + conjugation)</td>
+<td>Good</td>
+<td>None explicitly stated</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Art 11 (Zheng)</td>
+<td>Adequate (clinical case + genomics)</td>
+<td>No direct mechanistic testing</td>
+<td>Adequate (HD9931 as sensitive control)</td>
+<td>Good</td>
+<td>Not clearly reported</td>
+<td>Moderate (AST + genomics + conjugation + growth curve)</td>
+<td>Good; abstract claims "enhanced fitness" for HD10868 but growth curves show no significant difference</td>
+<td>None explicitly stated</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Art 12 (Zhang)</td>
+<td>High (clinical pairs + in vitro evolution + time-kill)</td>
+<td>Mixed (qRT-PCR + efflux inhibition + WGS; no KO)</td>
+<td>Good (pre/post treatment pairs; susceptible vs heteroresistant vs resistant)</td>
+<td>Medium (some expression values in figures only)</td>
+<td>PAP in triplicate; time-kill in triplicate</td>
+<td>Good (MIC + PAP + expression + mutation + time-kill + WGS)</td>
+<td>Good</td>
+<td>None explicitly stated in text</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>Art 13 (Tao)</td>
+<td>Adequate (phenotypic + genomic characterization)</td>
+<td>No direct mechanistic testing; genomic prediction only</td>
+<td>Adequate (parent vs subclone)</td>
+<td>Good (MIC, growth kinetics, stability)</td>
+<td>Growth curves stated "in triplicate"</td>
+<td>Limited (no transcriptomic validation)</td>
+<td>Good; authors explicitly acknowledge limitation</td>
+<td>Authors state: "predictions based off genomic data estimation only"</td>
+<td>Low-Medium</td>
+</tr>
+</tbody>
+</table>
+<h3>C.2 Common Strengths Across Corpus</h3>
+<ul>
+<li>MIC testing is universally reported and quantitative (all 13 articles).</li>
+<li>Multiple articles use paired/isogenic comparisons (Art 1, 4, 5, 6, 12).</li>
+<li>Several articles use gene knockout and complementation to establish causality (Art 1, 4, 5, 6).</li>
+<li>Efflux pump inhibitor assays provide functional evidence in multiple articles (Art 2, 3, 9, 12).</li>
+<li>Genomic characterization (WGS) is widely used (Art 1, 3, 4, 7, 8, 9, 10, 11, 12, 13).</li>
+</ul>
+<h3>C.3 Common Weaknesses Across Corpus</h3>
+<ul>
+<li>Replication and statistical reporting are inconsistent across articles; many do not clearly state replicate numbers for MIC testing.</li>
+<li>Several articles report key quantitative values only in figures, not numerically in text (Art 1, 4, 12).</li>
+<li>Supplementary data referenced but unavailable for extraction (Art 1, 2, 3, 7, 9, 10, 11).</li>
+<li>Author-stated limitations are minimal or absent in most articles.</li>
+</ul>
+<h3>C.4 Recurring Threats to Interpretability</h3>
+<ul>
+<li>Lack of functional validation in surveillance/genomics-focused articles (Art 8, 9, 10, 13).</li>
+<li>Different reference strains (ATCC 13883 vs ATCC 43816 vs paired clinical isolates) limit direct cross-study comparison of fold-changes.</li>
+<li>Different efflux pump inhibitors (PAbN, CCCP, NMP) at different concentrations used across studies.</li>
+</ul>
+<h3>C.5 Studies with Strongest Mechanistic Support</h3>
+<p>Art 5 (Xu Q), Art 6 (Zhao), Art 4 (Xu Y), Art 1 (Wang) — all employ direct genetic manipulation (knockout, complementation, CRISPR) and/or direct binding assays (EMSA) to support causal claims.</p>
+<h3>C.6 Studies with Weakest Mechanistic Support</h3>
+<p>Art 8 (Xu C), Art 13 (Tao) — primarily descriptive genomic/phenotypic characterization without functional validation experiments.</p>
+<hr/>
+<h2>MODULE D — MECHANISTIC SYNTHESIS</h2>
+<h3>D.1 Mechanism Groups</h3>
+<h4>MG-1: RamR Loss-of-Function → ramA Derepression → AcrAB-TolC Overexpression → Tigecycline Resistance</h4>
+<ul>
+<li><strong>Status</strong>: Multi-study supported</li>
+<li><strong>Support count</strong>: 6 articles (Art 1, 2, 3, 4, 5, 12); &gt;30 study_entries across these articles</li>
+<li><strong>Supporting articles</strong>: Wang (Art 1), Li (Art 2), Chirabhundhu (Art 3), Xu Y (Art 4), Xu Q (Art 5), Zhang (Art 12)</li>
+<li><strong>Dominant model(s)</strong>: In vitro complementation, CRISPR knockout/knock-in, qRT-PCR, efflux pump inhibition, EMSA (recurrent across ≥2 articles)</li>
+<li><strong>Effect type(s)</strong>: MIC change, gene expression change, binding affinity</li>
+<li><strong>Typical magnitude range</strong>: TGC MIC 4- to 16-fold increase (varies by strain and mutation); ramA overexpression 3.88- to 168.7-fold (varies by comparator)</li>
+<li><strong>Confidence level</strong>: High (for the overall pathway); medium for individual quantitative estimates due to comparator heterogeneity</li>
+</ul>
+<p><strong>Constrained Mechanism Flow:</strong></p>
+<p>Step 1: RamR acquires loss-of-function mutation (diverse types: point mutations [T116I, A19V, F48S], frameshifts [g. 517_518 del, C-insertion at pos 99/100], insertions [15-aa insertion], truncations [R108stop])</p>
+<ul>
+<li>Status: Multi-study supported</li>
+<li>Supporting articles: Art 1 (T116I), Art 2 (diverse), Art 3 (frameshifts/point mutations), Art 4 (g. 517_518 del), Art 5 (R108stop), Art 12 (A19V, F48S, 15-aa insertion)</li>
+<li>Support count: 6 articles</li>
+<li>Evidence: WGS, Sanger sequencing, PCR</li>
+<li>Quote: "point mutations A19V and F48S in ramR were found in K78 and K276" (Art 12); "comparative analysis revealed a nonsynonymous point mutation in the tigecycline resistance-associated transcriptional regulator RamR" (Art 1)</li>
+</ul>
+<p>Step 2: Mutant RamR has reduced binding affinity to ramA promoter</p>
+<ul>
+<li>Status: Single-study supported (direct EMSA evidence)</li>
+<li>Supporting articles: Art 1 (EMSA showing T116I binds at 1:40 vs WT at 1:20)</li>
+<li>Support count: 1 article (for direct binding data)</li>
+<li>Quote: "KP124 RamR protein-initiated probe bound at a 1:20 DNA:protein ratio, whereas the KP126 RamR protein began binding at a 1:40 ratio" (Art 1)</li>
+<li>Caveat: Only T116I mutation tested by EMSA; other ramR mutations not tested for direct binding</li>
+</ul>
+<p>Step 3: Reduced RamR repression leads to ramA overexpression</p>
+<ul>
+<li>Status: Multi-study supported</li>
+<li>Supporting articles: Art 1, 2, 3, 5, 12</li>
+<li>Support count: 5 articles</li>
+<li>Evidence: qRT-PCR across multiple studies</li>
+<li>Quote: "ramA 168.7-fold overexpressed" (Art 5); "ramA 3.88–23.77-fold" (Art 2); "ramA 1.9 to 24.9-fold" (Art 3)</li>
+</ul>
+<p>Step 4: Elevated RamA upregulates AcrAB-TolC efflux pump transcription</p>
+<ul>
+<li>Status: Multi-study supported</li>
+<li>Supporting articles: Art 1, 2, 3, 5, 12</li>
+<li>Support count: 5 articles</li>
+<li>Evidence: qRT-PCR for acrB; Art 5 provides EMSA evidence of RamA binding acrAB promoter (single-study for direct binding)</li>
+<li>Quote: "acrB 5.49- to 48.49-fold" (Art 2); "acrB expression level was significantly increased in high-level tigecycline-resistant group (P=0.0002)" (Art 3)</li>
+</ul>
+<p>Step 5: AcrAB-TolC overexpression increases tigecycline efflux, raising MIC</p>
+<ul>
+<li>Status: Multi-study supported</li>
+<li>Supporting articles: Art 1 (complementation), Art 2 (PAbN), Art 3 (CCCP), Art 4 (KO/complementation), Art 5 (acrB KO), Art 12 (PAbN)</li>
+<li>Support count: 6 articles</li>
+<li>Quote: "Deletion of acrB gene in KP22 led to a 16-fold reduction in tigecycline MIC" (Art 5); "96.6% of 30 tigecycline-resistant strains recovered their sensitivity" with PAbN (Art 2)</li>
+</ul>
+<p><strong>ASCII Causal Diagram (MG-1):</strong></p>
+<pre><code>ramR loss-of-function mutation
+       |
+       | [Multi-study; Art 1,2,3,4,5,12; WGS/sequencing]
+       v
+RamR reduced binding to ramA promoter
+       |
+       | [Single-study for direct EMSA; Art 1; "1:20 vs 1:40 ratio"]
+       | [Multi-study for expression consequence; Art 1,2,3,5,12; qRT-PCR]
+       v
+ramA overexpression (3.88- to 168.7-fold)
+       |
+       | [Multi-study; Art 1,2,3,5,12; qRT-PCR + EMSA (Art 5 only for binding)]
+       v
+AcrAB-TolC upregulation (1.2- to 48.49-fold acrB)
+       |
+       | [Multi-study; Art 1,2,3,4,5,12; MIC + efflux inhibitors]
+       v
+Tigecycline MIC increase (4- to 16-fold)
+</code></pre>
+<h4>MG-2: RamA → OqxAB Efflux Pump Upregulation</h4>
+<ul>
+<li><strong>Status</strong>: Single-study supported</li>
+<li><strong>Support count</strong>: 1 article (Art 5)</li>
+<li><strong>Supporting articles</strong>: Xu Q (Art 5)</li>
+<li><strong>Dominant model(s)</strong>: Not recurrent across corpus</li>
+<li><strong>Effect type(s)</strong>: MIC change, gene expression, direct binding (EMSA)</li>
+<li><strong>Confidence level</strong>: High (within Art 5; direct KO + complementation + EMSA evidence)</li>
+</ul>
+<p><strong>Constrained Mechanism Flow:</strong></p>
+<p>Step 1: RamA binds oqxAB promoter</p>
+<ul>
+<li>Status: Single-study supported</li>
+<li>Supporting article: Art 5</li>
+<li>Quote: "This is the first demonstration of direct binding between RamA and the promoter DNA of oqxAB" (Art 5)</li>
+</ul>
+<p>Step 2: RamA overexpression upregulates oqxB</p>
+<ul>
+<li>Status: Single-study supported</li>
+<li>Supporting article: Art 5</li>
+<li>Quote: "oqxB 10.7-fold overexpressed" (Art 5)</li>
+</ul>
+<p>Step 3: OqxAB mediates resistance to tetracycline, ciprofloxacin, nitrofurantoin (but not tigecycline directly)</p>
+<ul>
+<li>Status: Single-study supported</li>
+<li>Supporting article: Art 5</li>
+<li>Quote: "When oqxB was knocked out, the MICs of tetracycline, ciprofloxacin and nitrofurantoin were considerably decreased" (Art 5)</li>
+</ul>
+<h4>MG-3: RamA → mlaFEDCB → Membrane Stability + Moderate Tetracycline-Class Resistance</h4>
+<ul>
+<li><strong>Status</strong>: Single-study supported</li>
+<li><strong>Support count</strong>: 1 article (Art 6)</li>
+<li><strong>Supporting articles</strong>: Zhao (Art 6)</li>
+<li><strong>Dominant model(s)</strong>: Not recurrent across corpus</li>
+<li><strong>Effect type(s)</strong>: gene expression, MIC, membrane stability (SDS-EDTA sensitivity)</li>
+<li><strong>Confidence level</strong>: High (within Art 6; RNA-seq + qRT-PCR + EMSA + MIC + phenotypic assays)</li>
+</ul>
+<p><strong>Constrained Mechanism Flow:</strong></p>
+<p>Step 1: RamA directly binds mlaFEDCB promoter</p>
+<ul>
+<li>Status: Single-study supported</li>
+<li>Supporting article: Art 6</li>
+<li>Quote: "RamA bound to the promoter region of the mlaFEDCB operon" (Art 6)</li>
+</ul>
+<p>Step 2: mlaFEDCB expression depends on RamA</p>
+<ul>
+<li>Status: Single-study supported</li>
+<li>Supporting article: Art 6</li>
+<li>Quote: "mlaE fivefold higher in wild-type KP22 than in KP22ΔramA" (Art 6)</li>
+</ul>
+<p>Step 3: mlaFEDCB mediates moderate resistance to tetracycline-class antibiotics and membrane stability</p>
+<ul>
+<li>Status: Single-study supported</li>
+<li>Supporting article: Art 6</li>
+<li>Quote: "fourfold reduction in the MIC of tigecycline" upon ΔmlaE (Art 6); "ramA- and mlaE-knockout strains were accordingly found to exhibit greater sensitivity to SDS-EDTA" (Art 6)</li>
+</ul>
+<h4>MG-4: tet(A) Mutations Under Selective Pressure → Increased Tigecycline MIC</h4>
+<ul>
+<li><strong>Status</strong>: Multi-study supported</li>
+<li><strong>Support count</strong>: 2 articles (Art 7, Art 3)</li>
+<li><strong>Supporting articles</strong>: Xu J (Art 7), Chirabhundhu (Art 3)</li>
+<li><strong>Effect type(s)</strong>: MIC increase</li>
+<li><strong>Typical magnitude range</strong>: 2- to 8-fold MIC increase for individual mutants (Art 7 transconjugants)</li>
+<li><strong>Confidence level</strong>: Medium</li>
+</ul>
+<p><strong>Constrained Mechanism Flow:</strong></p>
+<p>Step 1: tet(A)-bearing K. pneumoniae evolves tet(A) point mutations under tigecycline pressure</p>
+<ul>
+<li>Status: Multi-study supported</li>
+<li>Art 7: in vitro evolution, 71.4% developed tet(A) mutations</li>
+<li>Art 3: WGS detection of mutated Tet(A) in clinical isolates</li>
+<li>Caveat: Art 3 does not perform in vitro evolution but detects already-present mutations</li>
+</ul>
+<p>Step 2: Mutated Tet(A) confers increased tigecycline MIC</p>
+<ul>
+<li>Status: Multi-study supported</li>
+<li>Art 7: conjugation and transformation demonstrate 2- to 8-fold MIC increase</li>
+<li>Art 3: reports TGC MIC of 8 µg/mL in Tet(A)-mutant isolates</li>
+</ul>
+<h4>MG-5: tmexCD1-toprJ1 (Mobile RND Efflux Pump) → Tigecycline Resistance</h4>
+<ul>
+<li><strong>Status</strong>: Multi-study supported</li>
+<li><strong>Support count</strong>: 3 articles (Art 9, 10, 11)</li>
+<li><strong>Supporting articles</strong>: Hirabayashi (Art 9), Sun (Art 10), Zheng (Art 11)</li>
+<li><strong>Effect type(s)</strong>: MIC increase, prevalence, transferability (variable)</li>
+<li><strong>Confidence level</strong>: Medium (no knockout/complementation experiments in any article)</li>
+</ul>
+<p><strong>Constrained Mechanism Flow:</strong></p>
+<p>Step 1: tmexCD1-toprJ1 gene cluster acquired on plasmid (predominantly IncFIB(Mar)/IncHI1B hybrid)</p>
+<ul>
+<li>Status: Multi-study supported</li>
+<li>Support count: 3 articles</li>
+<li>Quote: "tmexCD1-toprJ1 was located on both plasmids (n = 8) and the chromosome (n = 1)" (Art 10)</li>
+</ul>
+<p>Step 2: tmexCD1-toprJ1 carriage associated with tigecycline resistance/elevated MIC</p>
+<ul>
+<li>Status: Multi-study supported</li>
+<li>Art 9: NMP reduces TGC MIC to ≤0.25 mg/L</li>
+<li>Art 10: TGC MIC ≥4 mg/liter in all positive strains</li>
+<li>Art 11: transconjugant TGC MIC 4 mg/L</li>
+<li>Caveat: No knockout/complementation experiments performed in any article to confirm direct causality</li>
+</ul>
+<p>Step 3: Plasmids are conjugatively transferable (variable)</p>
+<ul>
+<li>Status: Multi-study supported (for transferability as a property); heterogeneous outcomes</li>
+<li>Art 9: no transfer detected</li>
+<li>Art 10: 1/9 transferred</li>
+<li>Art 11: both plasmids transferred (~10⁻⁶ frequency)</li>
+</ul>
+<h4>MG-6: Tigecycline Heteroresistance (Phenotypic)</h4>
+<ul>
+<li><strong>Status</strong>: Multi-study supported</li>
+<li><strong>Support count</strong>: 2 articles (Art 12, Art 13)</li>
+<li><strong>Supporting articles</strong>: Zhang (Art 12), Tao (Art 13)</li>
+<li><strong>Confidence level</strong>: Medium</li>
+</ul>
+<p>Heteroresistance is characterized by subpopulation-level resistance emerging from susceptible parent strains. Both articles report stability (7–15 days antibiotic-free) and minimal fitness cost. Art 12 provides mechanistic data (ramR mutations in subpopulations, AcrAB-TolC upregulation); Art 13 provides genomic characterization without transcriptomic validation.</p>
+<h3>D.2 Uncertainty Points</h3>
+<ul>
+<li><strong>Numeric ambiguity flags</strong>: Present in Art 1 (qRT-PCR fold-changes in figures only), Art 4 (expression values in figures only), Art 12 (expression values in figures only), Art 13 (time-kill approximate values).</li>
+<li><strong>Missing comparator/baseline</strong>: Several articles use different reference strains, limiting cross-study magnitude comparisons.</li>
+<li><strong>Unresolved mechanism branches</strong>: Art 2 notes 3 isolates with elevated ramA expression without ramR mutations; Art 3 notes isolates with low acrB expression despite efflux-positive phenotype; Art 12 discusses possibility of IS-mediated ramA upregulation.</li>
+<li><strong>Author-stated limitations affecting mechanism</strong>: Art 1 (KP437 used instead of original strains); Art 13 explicitly states "predictions based off genomic data estimation only."</li>
+<li><strong>Single-study-local uncertainties</strong>: RamR T116I EMSA binding data (Art 1 only); RamA–oqxAB binding (Art 5 only); RamA–mlaFEDCB binding (Art 6 only).</li>
+<li><strong>Recurrent across ≥2 articles</strong>: Lack of knockout/complementation for tmexCD1-toprJ1 (Art 9, 10, 11 all lack this).</li>
+</ul>
+<hr/>
+<h2>MODULE E — SCIENTIFIC GAP ANALYSIS</h2>
+<h3>E.1 Repeated Study-Level Gaps</h3>
+<table>
+<thead>
+<tr>
+<th>Gap Label</th>
+<th>Articles</th>
+<th>Support Count</th>
+<th>Status</th>
+<th>Affected Mechanism/Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lack of functional validation (KO/complementation) for tmexCD1-toprJ1 contribution to TGC resistance</td>
+<td>Art 9, 10, 11</td>
+<td>3</td>
+<td>Multi-study supported (repeated missingness)</td>
+<td>MG-5 (tmexCD1-toprJ1)</td>
+</tr>
+<tr>
+<td>No transcriptomic/functional validation of genomic resistance gene predictions</td>
+<td>Art 8, 13</td>
+<td>2</td>
+<td>Multi-study supported (repeated missingness)</td>
+<td>tet(A) variants, ramR/ramA predictions</td>
+</tr>
+<tr>
+<td>Supplementary data referenced but unavailable, limiting reproducibility of quantitative claims</td>
+<td>Art 1, 2, 3, 7, 9, 10, 11</td>
+<td>7</td>
+<td>Multi-study supported (repeated missingness)</td>
+<td>All mechanisms</td>
+</tr>
+<tr>
+<td>Replication/sample size details not clearly reported for MIC or expression experiments</td>
+<td>Art 1, 2, 3, 5, 7, 8, 9, 10, 11</td>
+<td>9</td>
+<td>Multi-study supported (repeated missingness)</td>
+<td>All mechanisms</td>
+</tr>
+<tr>
+<td>Author-stated limitations minimal or absent</td>
+<td>Art 2, 3, 7, 8, 9, 10</td>
+<td>6</td>
+<td>Multi-study supported (repeated missingness)</td>
+<td>Study interpretation</td>
+</tr>
+<tr>
+<td>Key quantitative values reported only in figures, not numerically in text</td>
+<td>Art 1, 4, 12</td>
+<td>3</td>
+<td>Multi-study supported (repeated missingness)</td>
+<td>MG-1 (ramR/ramA/AcrAB pathway)</td>
+</tr>
+<tr>
+<td>RamR EMSA binding data available for only one mutation type (T116I)</td>
+<td>Art 1</td>
+<td>1</td>
+<td>Single-study supported</td>
+<td>MG-1 step 2</td>
+</tr>
+<tr>
+<td>No animal model validation for any mechanism</td>
+<td>Art 1–13</td>
+<td>13</td>
+<td>Multi-study supported (corpus-wide missingness)</td>
+<td>All mechanisms</td>
+</tr>
+<tr>
+<td>No knockout/complementation for tet(A) role in clinical isolates</td>
+<td>Art 2, 3</td>
+<td>2</td>
+<td>Multi-study supported</td>
+<td>MG-4</td>
+</tr>
+</tbody>
+</table>
+<h3>E.2 Corpus-Level Structural Gaps</h3>
+<ol>
+<li><p><strong>Missing functional validation for tmexCD1-toprJ1</strong>: No article in the corpus performs gene knockout or complementation to directly confirm tmexCD1-toprJ1 as the causal determinant of tigecycline resistance. All 3 tmexCD1-toprJ1 articles (Art 9, 10, 11) rely on correlative evidence (MIC + efflux inhibitor + genomic co-occurrence). Support count: 3 articles.</p>
+</li>
+<li><p><strong>Missing in vivo / animal model validation</strong>: No article in the corpus uses animal infection models to validate any tigecycline resistance mechanism. All evidence is in vitro or clinical observational. Support count: 13 articles (corpus-wide).</p>
+</li>
+<li><p><strong>Missing standardized comparator across studies</strong>: Different reference strains (ATCC 13883, ATCC 43816, paired clinical isolates) and different efflux pump inhibitors (PAbN, CCCP, NMP) prevent direct quantitative comparison across studies. Support count: ≥5 articles affected.</p>
+</li>
+<li><p><strong>Missing mechanistic testing of tet(A) variants in clinical isolates</strong>: Art 2 and Art 3 identify tet(A) variants in clinical isolates but do not perform knockout or cloning experiments to confirm their individual contribution to resistance. Support count: 2 articles.</p>
+</li>
+<li><p><strong>Lack of transcriptomic validation in genomics-focused studies</strong>: Art 8 and Art 13 make resistance gene associations based on genomic data alone without expression-level confirmation. Support count: 2 articles.</p>
+</li>
+</ol>
+<h3>E.3 Gap Taxonomy</h3>
+<p><strong>Mechanistic validation gaps:</strong></p>
+<ul>
+<li>No KO/complementation for tmexCD1-toprJ1 (3 articles)</li>
+<li>No KO for tet(A) variants in clinical isolates (2 articles)</li>
+<li>Only one ramR mutation (T116I) tested by direct EMSA binding (1 article)</li>
+<li>No transcriptomic validation in genomics-focused studies (2 articles)</li>
+</ul>
+<p><strong>Comparator/baseline gaps:</strong></p>
+<ul>
+<li>Inconsistent reference strains across studies (≥5 articles)</li>
+<li>Different efflux pump inhibitors used (3 articles)</li>
+</ul>
+<p><strong>Measurement/reporting gaps:</strong></p>
+<ul>
+<li>Key quantitative values in figures only (3 articles)</li>
+<li>Replication details not reported (≥9 articles)</li>
+<li>Supplementary data unavailable (7 articles)</li>
+</ul>
+<p><strong>Model gaps:</strong></p>
+<ul>
+<li>No animal/in vivo models (corpus-wide, 13 articles)</li>
+<li>No biofilm-context testing (corpus-wide)</li>
+</ul>
+<p><strong>Transferability/generalizability gaps:</strong></p>
+<ul>
+<li>Most studies single-center (Art 1, 2, 4, 5, 6, 8, 11, 12, 13)</li>
+<li>Geographic concentration (primarily China, with Art 3 from Thailand, Art 9 from Japan)</li>
+</ul>
+<hr/>
+<h2>MODULE F — CLAIM STATUS LEDGER</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Claim Text</th>
+<th>Claim Scope</th>
+<th>Status</th>
+<th>Support Count (Articles)</th>
+<th>Supporting Articles</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>ramR loss-of-function mutations lead to ramA derepression, AcrAB-TolC overexpression, and increased tigecycline MIC in K. pneumoniae</td>
+<td>Corpus-level</td>
+<td>Multi-study supported</td>
+<td>6</td>
+<td>Art 1, 2, 3, 4, 5, 12</td>
+<td>Demonstrated by complementation, knockout, qRT-PCR, efflux inhibition across 6 independent studies</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Efflux pump inhibitors (PAbN, CCCP) can restore tigecycline susceptibility in resistant K. pneumoniae isolates</td>
+<td>Corpus-level</td>
+<td>Multi-study supported</td>
+<td>3</td>
+<td>Art 2, 3, 12</td>
+<td>Three articles show MIC reduction with efflux inhibitors; different inhibitors used</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>acrB and ramA are upregulated in tigecycline-resistant vs susceptible K. pneumoniae</td>
+<td>Corpus-level</td>
+<td>Multi-study supported</td>
+<td>5</td>
+<td>Art 1, 2, 3, 5, 12</td>
+<td>Consistently shown by qRT-PCR across 5 studies with different strain backgrounds</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>tet(A) mutations evolved under tigecycline selective pressure increase tigecycline MIC</td>
+<td>Mechanism-group level</td>
+<td>Multi-study supported</td>
+<td>2</td>
+<td>Art 3, 7</td>
+<td>Art 7 provides in vitro evolution + conjugation/transformation data; Art 3 provides WGS detection in clinical isolates</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>tmexCD1-toprJ1 is predominantly plasmid-borne and associated with tigecycline resistance in K. pneumoniae</td>
+<td>Mechanism-group level</td>
+<td>Multi-study supported</td>
+<td>3</td>
+<td>Art 9, 10, 11</td>
+<td>Three articles consistently report plasmid localization and TGC resistance association; no direct functional validation (KO/complementation) in any article</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Tigecycline heteroresistance is phenotypically stable and imposes minimal fitness cost</td>
+<td>Mechanism-group level</td>
+<td>Multi-study supported</td>
+<td>2</td>
+<td>Art 12, 13</td>
+<td>Both articles demonstrate stability (7–15 days) and comparable growth kinetics</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>RamR T116I mutation reduces RamR binding affinity to ramA promoter (EMSA evidence)</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 1</td>
+<td>Only Art 1 performs EMSA with this specific mutation</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>RamA directly binds the acrAB promoter region (EMSA evidence)</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 5</td>
+<td>Only Art 5 provides EMSA data for RamA–acrAB binding</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>RamA directly binds the oqxAB promoter region (EMSA evidence)</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 5</td>
+<td>Only Art 5 provides EMSA data for RamA–oqxAB binding</td>
+</tr>
+<tr>
+<td>F10</td>
+<td>RamA directly binds the mlaFEDCB promoter and activates transcription</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 6</td>
+<td>Only Art 6 provides EMSA and transcriptomic data for this pathway</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>mlaFEDCB mediates moderate resistance to tetracycline-class antibiotics and contributes to membrane stability under RamA regulation</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 6</td>
+<td>Only Art 6 demonstrates this via knockout + complementation + SDS-EDTA assays</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>Wild-type tet(A) carriage alone confers approximately 2-fold increase in tigecycline MIC</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 7</td>
+<td>Only Art 7 demonstrates this specific quantitative claim</td>
+</tr>
+<tr>
+<td>F13</td>
+<td>ramR mutation is stable across 200 generations without tigecycline pressure, whereas non-ramR-mediated resistance reverts</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 4</td>
+<td>Only Art 4 performs stability passage testing</td>
+</tr>
+<tr>
+<td>F14</td>
+<td>Introduction of T116I variant into a susceptible strain's chromosome is sufficient to increase tigecycline MIC (CRISPR knock-in)</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 1</td>
+<td>Only Art 1 performs this specific knock-in experiment</td>
+</tr>
+<tr>
+<td>F15</td>
+<td>IS26 mediates mobilization of tmexCD1-toprJ1</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 10</td>
+<td>Only Art 10 explicitly claims IS26-mediated mobilization based on genetic context</td>
+</tr>
+<tr>
+<td>F16</td>
+<td>RamR T116I mutation disrupts hydrogen bond network (6→3 bonds at position 116) based on AlphaFold3 prediction</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 1</td>
+<td>Computational prediction only (AlphaFold3); no experimental crystal structure</td>
+</tr>
+<tr>
+<td>F17</td>
+<td>Diverse ramR mutation types (point mutations, frameshifts, deletions, insertions, truncations) all converge on ramA derepression</td>
+<td>Corpus-level</td>
+<td>Multi-study supported</td>
+<td>6</td>
+<td>Art 1, 2, 3, 4, 5, 12</td>
+<td>Each article reports different ramR mutation types all leading to the same downstream effect</td>
+</tr>
+<tr>
+<td>F18</td>
+<td>68.49% of tet(A)-v1-positive CRKP plasmids are conjugatively transferable</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 8</td>
+<td>Only Art 8 reports this specific transferability rate</td>
+</tr>
+<tr>
+<td>F19</td>
+<td>Tigecycline heteroresistance in K. pneumoniae involves ramR mutations in subpopulations with AcrAB-TolC upregulation</td>
+<td>Article-level</td>
+<td>Single-study supported</td>
+<td>1</td>
+<td>Art 12</td>
+<td>Art 13 reports heteroresistance but lacks transcriptomic/mechanistic data to support the same mechanistic statement</td>
+</tr>
+<tr>
+<td>F20</td>
+<td>No animal/in vivo model has validated any tigecycline resistance mechanism in this corpus</td>
+<td>Corpus-level</td>
+<td>Multi-study supported (by absence)</td>
+<td>13</td>
+<td>Art 1–13</td>
+<td>No article includes animal model experiments</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2>MODULE G — CROSS-MODULE CONSISTENCY CHECK</h2>
+<h3>Consistency Checks Performed:</h3>
+<ol>
+<li><p><strong>F1 (ramR → ramA → AcrAB-TolC, corpus-level, multi-study, 6 articles)</strong>: Consistent with MODULE B cross-study consistency #1 (same 6 articles), MODULE D MG-1 (same 6 articles, same status). ✓</p>
+</li>
+<li><p><strong>F2 (efflux inhibitor restores susceptibility, corpus-level, multi-study, 3 articles)</strong>: Consistent with MODULE B #2 (same 3 articles). ✓</p>
+</li>
+<li><p><strong>F3 (acrB/ramA upregulation, corpus-level, multi-study, 5 articles)</strong>: Consistent with MODULE B #3 (same 5 articles). ✓</p>
+</li>
+<li><p><strong>F4 (tet(A) mutations, mechanism-group, multi-study, 2 articles)</strong>: Consistent with MODULE B #4 (same 2 articles), MODULE D MG-4 (same 2 articles). Note: partial heterogeneity acknowledged in both modules. ✓</p>
+</li>
+<li><p><strong>F5 (tmexCD1-toprJ1, mechanism-group, multi-study, 3 articles)</strong>: Consistent with MODULE B #5 (same 3 articles), MODULE D MG-5 (same 3 articles). Caveat about missing KO/complementation preserved in all modules. ✓</p>
+</li>
+<li><p><strong>F6 (heteroresistance stable, mechanism-group, multi-study, 2 articles)</strong>: Consistent with MODULE B #6 (same 2 articles), MODULE D MG-6 (same 2 articles). ✓</p>
+</li>
+<li><p><strong>F7–F16 (all single-study supported)</strong>: Verified that none of these appear as "recurring", "corpus-level", or "dominant" anywhere in MODULE B, D, or E. ✓</p>
+</li>
+<li><p><strong>MODULE E corpus-level gaps</strong>: All meet ≥2 article threshold. Verified: no animal model gap (13 articles), no tmexCD1-toprJ1 KO (3 articles), missing replication details (≥9 articles). ✓</p>
+</li>
+<li><p><strong>Ambiguity caveats</strong>: Art 1 potential typo ("repression of ramR" vs "ramA") preserved as caveat in MODULE D MG-1 and not used to inflate any claim. Art 11 abstract vs growth curve discrepancy preserved in MODULE C. Art 2 internal inconsistency (death rate 37.7% vs 36.7%) preserved in MODULE C. ✓</p>
+</li>
+<li><p><strong>No escalation words used</strong>: Verified no use of "dominant", "major field-wide pattern", "established corpus mechanism", "canonical field mechanism", or "central field mechanism" in any module. ✓</p>
+</li>
+<li><p><strong>MODULE H (Scientific Landscape) claim harmonization</strong>: All 10 field claims in H.7 have been cross-checked against MODULE F ledger entries. H.7 Claim 1 = F1 (multi-study, 6 articles) ✓; H.7 Claim 2 = F8+F9 (single-study, Art 5) ✓; H.7 Claim 3 = F4 (multi-study, 2–3 articles) ✓; H.7 Claim 4 = F5 (multi-study, 3 articles) ✓; H.7 Claim 5 = F2 (multi-study, 3–4 articles) ✓; H.7 Claim 6 = F10+F11 (single-study, Art 6) ✓; H.7 Claim 7 = F6+F19 (multi-study for stability/fitness; single-study for ramR-mutation-specific mechanistic detail) ✓; H.7 Claim 8 = Proposed (no corresponding multi-study supported entry in F) ✓; H.7 Claim 9 = F13 (single-study, Art 4) ✓; H.7 Claim 10 = F15 expanded (multi-study, Art 9, 10, 11 for IS26 context) ✓. No status escalation detected.</p>
+</li>
+<li><p><strong>MODULE H subdomain labeling</strong>: Verified that subdomain E (MlaFEDCB) is correctly noted as single-article (Art 6 only) and not described as corpus-wide or recurring. Verified subdomain D (heteroresistance) correctly noted as 2-article support. ✓</p>
+</li>
+<li><p><strong>MODULE H trend status labels</strong>: All trends verified against MODULE B recurrence summary and MODULE F. No trend labeled "Multi-study supported" with fewer than 2 articles. Trend 7 (single-center design) correctly described as an observation about study design rather than a mechanistic claim. ✓</p>
+</li>
+</ol>
+<h3>consistency_pass: <strong>yes</strong></h3>
+<p>All modules (A through H) agree on claim scope, status, and support counts. No mismatches identified requiring correction. Conservative labeling has been maintained throughout: all single-study claims remain single-study supported; all corpus-level claims meet ≥2 article threshold; all caveats and ambiguity flags are preserved across modules. Module H (Scientific Landscape) integrated without evidence level escalation.</p>
+<hr/>
+<hr/>
+<h2>MODULE H — SCIENTIFIC LANDSCAPE REVIEW</h2>
+<p><em>(Merged from separately generated Scientific Landscape analysis of the same 13 PASS 1 extractions.)</em></p>
+<h3>H.1 Main Subdomains and Connections</h3>
+<p>The corpus resolves into five principal subdomains, each derived from recurring extracted entities, mechanisms, and experimental approaches across the 13 articles.</p>
+<p><strong>SUBDOMAIN A — Chromosomal Efflux Pump Regulation (RamR–RamA–AcrAB-TolC axis)</strong></p>
+<ul>
+<li>Core entities: RamR, RamA, AcrAB-TolC, OqxAB</li>
+<li>Articles: 1, 2, 3, 4, 5, 6, 12</li>
+<li>Connections: RamR mutations drive RamA derepression, which upregulates AcrAB-TolC (subdomain A) and also the MlaFEDCB system (subdomain E). Overlaps with subdomain C when chromosomal efflux coexists with acquired tet(A) variants. Overlaps with subdomain D when heteroresistant subpopulations acquire de novo ramR mutations.</li>
+</ul>
+<p><strong>SUBDOMAIN B — Mobile RND Efflux Pump tmexCD-toprJ</strong></p>
+<ul>
+<li>Core entities: tmexCD1-toprJ1, tnfxB1, IS26, IncFIB/IncHI1B plasmids</li>
+<li>Articles: 9, 10, 11, (also detected in 2)</li>
+<li>Connections: tmexCD1-toprJ1 is plasmid-borne and transferable by conjugation, connecting to epidemiological subdomain C via mobile genetic elements. Co-carriage with other ARGs (blaDHA-1, armA, qnrB4) reported across articles.</li>
+</ul>
+<p><strong>SUBDOMAIN C — Acquired Tetracycline Efflux Determinants: tet(A) and Variants</strong></p>
+<ul>
+<li>Core entities: tet(A) wild-type, tet(A) mutants (various amino acid substitutions), tet(A)-v1, plasmid-borne dissemination</li>
+<li>Articles: 7, 8, 2, 3</li>
+<li>Connections: Mutated tet(A) confers tigecycline efflux capacity not present in wild-type tet(A); co-occurrence with AcrAB-TolC overexpression (subdomain A) may produce additive high-level resistance (article 3 discussion). Plasmid diversity intersects with epidemiological clonal expansion.</li>
+</ul>
+<p><strong>SUBDOMAIN D — Tigecycline Heteroresistance</strong></p>
+<ul>
+<li>Core entities: heteroresistant subpopulations, PAP (population analysis profiling), ramR de novo mutations, AcrAB-TolC upregulation in subclones</li>
+<li>Articles: 12, 13</li>
+<li>Connections: Heteroresistance links to subdomain A because de novo ramR mutations arise during low-concentration tigecycline exposure, leading to AcrAB-TolC upregulation. Growth fitness data connects to persistence and treatment failure risk.</li>
+</ul>
+<p><strong>SUBDOMAIN E — Novel RamA-Regulated Targets (MlaFEDCB Pathway)</strong></p>
+<ul>
+<li>Core entities: MlaFEDCB operon, membrane stability, SDS-EDTA sensitivity</li>
+<li>Articles: 6</li>
+<li>Connections: RamA (subdomain A) directly binds the mlaFEDCB promoter. This pathway represents a non-efflux-pump mechanism contributing to tetracycline-class resistance via membrane integrity maintenance. Intersects subdomain A at the RamA regulatory node.</li>
+</ul>
+<h3>H.2 Field Map — Topics → Questions → Methods</h3>
+<p><strong>TOPIC 1: RamR mutations and AcrAB-TolC derepression</strong></p>
+<ul>
+<li>Questions: Which ramR mutations confer tigecycline resistance? Does RamR T116I reduce DNA-binding affinity? Is ramR mutation the sole factor? Is resistance stable over generations?</li>
+<li>Methods: WGS comparative genomics (Illumina, Nanopore, Snippy), CRISPR-Cas9 knockout and chromosomal knock-in, complementation with wild-type ramR, qRT-PCR (2^-ΔΔCt), EMSA, AlphaFold3/SWISS-MODEL structural prediction, DIA label-free proteomics, serial passage stability (200 generations), broth microdilution MIC.</li>
+</ul>
+<p><strong>TOPIC 2: RamA as a multidrug resistance transcriptional activator</strong></p>
+<ul>
+<li>Questions: Does RamA directly bind promoters of acrAB and oqxAB? What is the MIC impact of ramA deletion vs complementation? Does RamA regulate non-efflux targets (mlaFEDCB)?</li>
+<li>Methods: Gene knockout (ramA, acrB, oqxB, mlaE) and complementation, EMSA with purified His6-RamA protein, RNA-seq, qRT-PCR, SDS-EDTA membrane sensitivity assays, CFU quantification.</li>
+</ul>
+<p><strong>TOPIC 3: Plasmid-borne tet(A) variants and tigecycline resistance evolution</strong></p>
+<ul>
+<li>Questions: What is the prevalence of tet(A) in CRKP? Can wild-type tet(A) evolve mutations under tigecycline pressure? Are tet(A) mutant-carrying plasmids conjugatively transferable? What are the genetic contexts carrying tet(A)-v1?</li>
+<li>Methods: In vitro stepwise tigecycline induction, PCR screening and Sanger sequencing, conjugation transfer to E. coli EC600/J53/C600, Nanopore + Illumina hybrid assembly, phylogenetic analysis (cgSNP), plasmid backbone comparison (BRIG, ISfinder).</li>
+</ul>
+<p><strong>TOPIC 4: tmexCD1-toprJ1 mobile efflux pump epidemiology</strong></p>
+<ul>
+<li>Questions: What is the prevalence of tmexCD-toprJ in clinical/animal/food isolates? What is the genetic context and conserved core structure? Is tmexCD1-toprJ1 transferable by conjugation? What is the role of IS26 in mobilization?</li>
+<li>Methods: BLAST screening of large genome collections, PCR screening across multi-source samples, hybrid assembly (GridION + Illumina), conjugation assays, genetic context comparison, BRIG circular comparison, efflux pump inhibition (NMP).</li>
+</ul>
+<p><strong>TOPIC 5: Tigecycline heteroresistance</strong></p>
+<ul>
+<li>Questions: What is the prevalence of tigecycline heteroresistance in CRKP? What mutations arise in heteroresistant subpopulations? Is the phenotype stable without selective pressure? What is the fitness cost?</li>
+<li>Methods: Population analysis profiling (PAP), Kirby-Bauer/E-test, growth curve assays (OD620, μmax, AUC), efflux pump inhibition (PAbN), Sanger sequencing, PFGE clonal confirmation, time-kill curve assays, MALDI-TOF protein fingerprinting.</li>
+</ul>
+<p><strong>TOPIC 6: Molecular epidemiology and clonal dissemination</strong></p>
+<ul>
+<li>Questions: Which sequence types dominate in tigecycline-resistant K. pneumoniae? Is there evidence of nosocomial or inter-source transmission?</li>
+<li>Methods: MLST (7-gene scheme), ERIC-PCR typing, core genome SNP phylogeny, pairwise SNV analysis, PFGE, serotyping (Kaptive Web).</li>
+</ul>
+<h3>H.3 Recurring Trends (Reported Only)</h3>
+<p><strong>Trend 1</strong>: RamR loss-of-function mutations are the most frequently reported chromosomal mechanism of tigecycline resistance. ramR mutations detected in 73.3% (22/30) of TRKP isolates (Art 2), in 13/15 efflux-positive C-C-RKP isolates (Art 3), in all high-concentration induced strains (Art 4), in paired clinical isolates pre/post tigecycline therapy (Art 1, 12), and in heteroresistant subpopulations (Art 12, 13). Support count: 6 articles. Status: Multi-study supported.</p>
+<p><strong>Trend 2</strong>: AcrAB-TolC efflux pump overexpression correlates with tigecycline MIC levels across multiple study designs. acrB overexpression in 22/30 TRKP strains (5.49- to 48.49-fold; Art 2); acrB expression significantly higher in high-level vs low-level resistant groups (P=0.0002, Art 3); 16-fold MIC reduction upon acrB knockout (Art 5); consistent proteomics confirmation (Art 1). Support count: 5 articles. Status: Multi-study supported.</p>
+<p><strong>Trend 3</strong>: Efflux pump inhibitors (PAbN, CCCP, NMP) restore tigecycline susceptibility in the majority of resistant isolates. 96.6% re-sensitized by PAbN (Art 2); ≥4-fold MIC reduction with CCCP in 29 isolates (Art 3); MIC decreased to ≤0.25 mg/L with NMP (Art 9); 8- to 32-fold MIC reduction with PAbN in heteroresistant subpopulations (Art 12). Support count: 4 articles. Status: Multi-study supported.</p>
+<p><strong>Trend 4</strong>: Mutated tet(A) variants are an important acquired mechanism, particularly in ST11 CRKP lineages. 52.4% of CRKP carried tet(A) (Art 7); 19/30 TRKP carried tet(A) variants (Art 2); mutated Tet(A) in 4 ST147 isolates (Art 3); tet(A)-v1 in 73 pediatric CRKP isolates on diverse plasmids (Art 8); 84.8% in vitro tet(A) mutation rate under induction (Art 7). Support count: 4 articles. Status: Multi-study supported.</p>
+<p><strong>Trend 5</strong>: tmexCD1-toprJ1 prevalence remains low but is detected across human, animal, and food sources. 0.039% in Japan (2/5143; Art 9); 0.76–1.3% in Chinese hospital (Art 11); 9 strains from multi-source sampling (Art 10); 2/30 TRKP in Chongqing (Art 2). IS26-mediated mobilization is a shared structural feature (Art 9, 10, 11). Support count: 4 articles. Status: Multi-study supported.</p>
+<p><strong>Trend 6</strong>: Tigecycline heteroresistance occurs at low but consistent frequency in CRKP populations. 3.85% (2/52) PAP-confirmed heteroresistance (Art 13); 1/8 colonies showed heteroresistance after in vitro low-concentration exposure (Art 12). Both studies report de novo ramR mutations in resistant subpopulations. Support count: 2 articles. Status: Multi-study supported.</p>
+<p><strong>Trend 7</strong>: Single-center study design predominates across the corpus. 11 of 13 articles report data from single institutions or single geographic regions. Only Art 1 (NCBI database survey) and Art 10 (multi-source sampling) include broader geographic scope. Support count: 11 articles. Status: Multi-study supported.</p>
+<h3>H.4 Classes of Mechanisms</h3>
+<h4>H.4A — Supported (direct experimental evidence in the corpus)</h4>
+<p><strong>CLASS I: Chromosomal regulatory mutations leading to efflux pump overexpression</strong></p>
+<ul>
+<li>Mechanism: RamR loss-of-function → ramA derepression → AcrAB-TolC upregulation</li>
+<li>Evidence type: Gene knockout, complementation, EMSA, qRT-PCR, proteomics, CRISPR knock-in</li>
+<li>Articles: 1, 2, 3, 4, 5, 12</li>
+<li>Specific mutations: T116I (Art 1), A19V, F48S (Art 12), R108stop (Art 5), g.517_518del (Art 4), multiple point mutations/frameshifts/truncations (Art 2), ISKpn26 insertion (Art 12)</li>
+</ul>
+<p><strong>CLASS II: RamA as direct transcriptional activator of multiple efflux systems</strong></p>
+<ul>
+<li>Mechanism: RamA binds promoters of acrAB, oqxAB, and mlaFEDCB</li>
+<li>Evidence type: EMSA with purified RamA protein, gene knockout and complementation, RNA-seq, qRT-PCR</li>
+<li>Articles: 5, 6</li>
+<li>Key data: ramA deletion caused 16-fold tigecycline MIC reduction (Art 5); RamA binds acrAB, oqxAB promoters but not marR (Art 5); RamA binds mlaFEDCB promoter (Art 6)</li>
+</ul>
+<p><strong>CLASS III: Acquired plasmid-borne efflux — mutated tet(A) variants</strong></p>
+<ul>
+<li>Mechanism: Amino acid substitutions in Tet(A) MFS efflux pump confer tigecycline efflux capacity</li>
+<li>Evidence type: In vitro evolution, conjugation transfer, transformation, MIC comparison of mutant vs wild-type tet(A) transconjugants</li>
+<li>Articles: 7, 8, 2, 3</li>
+<li>Key data: tet(A) mutants increased tigecycline MIC 2–4 fold in E. coli DH5α (Art 7); 28/33 tet(A)-carrying isolates developed resistance (MIC ≥32 mg/L) under induction (Art 7)</li>
+</ul>
+<p><strong>CLASS IV: Acquired plasmid-borne efflux — tmexCD1-toprJ1 RND pump</strong></p>
+<ul>
+<li>Mechanism: Mobile RND-type efflux pump gene cluster on conjugative plasmids</li>
+<li>Evidence type: MIC testing, efflux pump inhibition (NMP), conjugation transfer, genetic context analysis</li>
+<li>Articles: 9, 10, 11</li>
+<li>Key data: Transconjugant tigecycline MIC increased ≥4-fold vs recipient (Art 11); NMP reduced MIC to ≤0.25 mg/L (Art 9)</li>
+</ul>
+<p><strong>CLASS V: MlaFEDCB pathway — membrane integrity mechanism</strong></p>
+<ul>
+<li>Mechanism: RamA upregulates mlaFEDCB → maintains outer membrane asymmetry → contributes to tetracycline-class resistance</li>
+<li>Evidence type: RNA-seq, qRT-PCR, EMSA, gene knockout, SDS-EDTA sensitivity, MIC testing</li>
+<li>Articles: 6</li>
+<li>Key data: mlaE knockout caused 4-fold tigecycline MIC reduction and increased SDS-EDTA sensitivity (Art 6)</li>
+</ul>
+<h4>H.4B — Proposed (author interpretation, not experimentally confirmed within corpus)</h4>
+<p><strong>PROPOSED-I</strong>: Co-occurrence of mutated Tet(A) with AcrAB-TolC overexpression as an additive mechanism for high-level tigecycline resistance. Source: Art 3 discussion. Status: Proposed — observational co-occurrence without controlled experimental separation.</p>
+<p><strong>PROPOSED-II</strong>: ramR mutation is not the sole factor for tigecycline resistance; other undiscovered mechanisms contribute. Source: Art 4, 7. Status: Proposed — induced strains without ramR mutations still showed increased MIC (Art 4); wild-type tet(A) isolates with low acrB expression nonetheless showed intermediate MIC (Art 7).</p>
+<p><strong>PROPOSED-III</strong>: Low-concentration tigecycline monotherapy selects for heteroresistant subpopulations carrying adaptive mutations. Source: Art 12 discussion. Status: Proposed — observed in vitro, not confirmed in vivo.</p>
+<p><strong>PROPOSED-IV</strong>: Heteroresistant subclones incur relatively low fitness cost. Source: Art 13 discussion. Status: Proposed — based on growth curve comparison (μmax reduction ~8%); no animal model or competition assay.</p>
+<p><strong>PROPOSED-V</strong>: IS26 drives interspecific transmission of tmexCD1-toprJ1 between poultry/food and clinical sources. Source: Art 10, 11 discussions. Status: Proposed — structural similarity observed but direct transmission path not demonstrated experimentally.</p>
+<p><strong>PROPOSED-VI</strong>: Temporal antimicrobial selection pressure maintains tmexCD1-toprJ1-carrying plasmids in bacterial populations. Source: Art 9 discussion. Status: Proposed — hypothesis based on epidemiological observation; not experimentally tested.</p>
+<h3>H.5 Repeated Gaps (Author-Stated Limitations/Gaps Only)</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Stated In</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GAP 1: Single-center study designs limit generalizability</td>
+<td>Art 2, 5, 8, 13</td>
+<td>Prevalence estimates may not represent national/global epidemiology</td>
+</tr>
+<tr>
+<td>GAP 2: Lack of standardized tigecycline breakpoints for Klebsiella spp.</td>
+<td>Art 3</td>
+<td>FDA, EUCAST, or surrogate breakpoints create cross-study inconsistency</td>
+</tr>
+<tr>
+<td>GAP 3: Limited gene screening panels</td>
+<td>Art 2, 3</td>
+<td>OqxAB, MarA, SoxS, RarA expression not measured in most studies</td>
+</tr>
+<tr>
+<td>GAP 4: Absence of in vivo experiments or longitudinal clinical tracking</td>
+<td>Art 5, 8</td>
+<td>In vitro data not validated in animal models</td>
+</tr>
+<tr>
+<td>GAP 5: Technical limitations in genetic manipulation of clinical isolates</td>
+<td>Art 1</td>
+<td>Surrogate strains required for knock-in experiments</td>
+</tr>
+<tr>
+<td>GAP 6: Efflux pump inhibitors have toxicity precluding clinical use</td>
+<td>Art 2</td>
+<td>No clinically translatable efflux inhibitor strategy</td>
+</tr>
+<tr>
+<td>GAP 7: Mla pathway studied only via mlaE single-gene knockout</td>
+<td>Art 6</td>
+<td>Individual mla gene contributions unknown</td>
+</tr>
+<tr>
+<td>GAP 8: Experimental confirmation lacking for detected mutations in specific strain backgrounds</td>
+<td>Art 11</td>
+<td>Mutations may be coincidental without strain-specific KO/complementation</td>
+</tr>
+<tr>
+<td>GAP 9: Role of additional regulators (MarA, SoxS, SoxR) requires further assessment</td>
+<td>Art 3, 12</td>
+<td>Regulatory network beyond RamR-RamA is incompletely characterized</td>
+</tr>
+</tbody>
+</table>
+<h3>H.6 Taxonomy of Commonly Reported Entities/Biomarkers</h3>
+<p><strong>CATEGORY 1: Transcriptional Regulators</strong> — RamR (Art 1, 2, 3, 4, 5, 12, 13), RamA (Art 1, 2, 3, 5, 6, 12), AcrR (Art 2, 3, 12, 13), OqxR (Art 2, 3), MarR (Art 3), SoxR (Art 3).</p>
+<p><strong>CATEGORY 2: Chromosomal Efflux Pump Systems</strong> — AcrAB-TolC RND-type (Art 1, 2, 3, 5, 7, 12), OqxAB RND-type (Art 2, 3, 5), MlaFEDCB ABC-type (Art 6).</p>
+<p><strong>CATEGORY 3: Acquired/Mobile Efflux Determinants</strong> — tet(A) wild-type MFS (Art 2, 3, 7, 8), tet(A) mutants/tet(A)-v1 MFS (Art 2, 3, 7, 8), tmexCD1-toprJ1 RND (Art 2, 9, 10, 11).</p>
+<p><strong>CATEGORY 4: Ribosomal Target Modifications</strong> — rpsJ mutations (30S ribosomal protein S10; Art 2, 3, 7, 12).</p>
+<p><strong>CATEGORY 5: Mobile Genetic Elements and Plasmid Backbones</strong> — IS26 (Art 9, 10, 11), ISKpn26 (Art 12), IncFIB/IncHI1B hybrid plasmids (Art 9, 10, 11), IncFII/IncR plasmids carrying tet(A) (Art 7, 8), Tn6855 (Art 9).</p>
+<p><strong>CATEGORY 6: Resistance Phenotype Classifications</strong> — Full resistance MIC ≥8 µg/mL (Art 1, 2, 3, 4, 5, 7), non-susceptibility/intermediate MIC 4 µg/mL (Art 7, 9), heteroresistance (Art 12, 13).</p>
+<p><strong>CATEGORY 7: Epidemiological Markers (Sequence Types)</strong> — ST11 (Art 7, 8, 12), ST15 (Art 3, 9, 10), ST16 (Art 3), ST17 (Art 8, 11), ST23 hypervirulent (Art 1), ST147 (Art 3), ST307 (Art 2).</p>
+<h3>H.7 Ten Field Claims</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Claim</th>
+<th>Supporting Articles</th>
+<th>Evidence Level</th>
+<th>Key Metric/Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>RamR loss-of-function mutations lead to ramA derepression and AcrAB-TolC overexpression, conferring tigecycline resistance</td>
+<td>Art 1, 2, 3, 4, 5, 12</td>
+<td>Multi-study supported</td>
+<td>MIC reduction 4- to 16-fold upon ramR complementation or ramA/acrB knockout; EMSA-confirmed reduced RamR DNA binding</td>
+</tr>
+<tr>
+<td>2</td>
+<td>RamA directly binds the promoters of both acrAB and oqxAB efflux pump operons, acting as a transcriptional activator of multidrug efflux</td>
+<td>Art 5</td>
+<td>Single-study supported</td>
+<td>EMSA band shift; ramA deletion caused 16-fold tigecycline MIC reduction</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mutated tet(A) variants confer tigecycline efflux capacity that wild-type tet(A) lacks, and these mutations arise at high frequency under in vitro selective pressure</td>
+<td>Art 7, 2, 3</td>
+<td>Multi-study supported</td>
+<td>84.8% tet(A) mutation rate; 2- to 4-fold MIC increase in transformants; transconjugant MIC elevation</td>
+</tr>
+<tr>
+<td>4</td>
+<td>tmexCD1-toprJ1 confers tigecycline resistance and is present at low prevalence (0.039–1.3%) in K. pneumoniae from clinical, animal, and food sources</td>
+<td>Art 9, 10, 11, 2</td>
+<td>Multi-study supported</td>
+<td>Prevalence 0.039% (Japan), 0.76–1.3% (China); MIC ≥4 mg/L in all positive isolates</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Efflux pump inhibitors (PAbN, CCCP, NMP) restore tigecycline susceptibility in the majority of resistant isolates in vitro</td>
+<td>Art 2, 3, 9, 12</td>
+<td>Multi-study supported</td>
+<td>96.6% re-sensitization (PAbN); ≥4-fold MIC reduction (CCCP); MIC to ≤0.25 mg/L (NMP)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>RamA positively regulates the mlaFEDCB operon, contributing to tetracycline-class resistance through membrane stability</td>
+<td>Art 6</td>
+<td>Single-study supported</td>
+<td>4- to 5-fold expression decrease upon ramA KO; 4-fold TGC MIC reduction upon mlaE KO; EMSA-confirmed binding</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Tigecycline heteroresistance occurs in CRKP at ~3–4% prevalence, with de novo ramR mutations and AcrAB-TolC overexpression in subpopulations</td>
+<td>Art 12, 13</td>
+<td>Multi-study supported</td>
+<td>3.85% PAP-confirmed; MIC shift 1→≥8 mg/L in subclones</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Co-occurrence of mutated Tet(A) with AcrAB-TolC overexpression may produce additive high-level resistance</td>
+<td>Art 3, 7</td>
+<td>Proposed</td>
+<td>Observational co-occurrence; controlled dissection not performed</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tigecycline resistance mediated by ramR mutations can be unstable when no structural mutation is present, but stable with frameshift/deletion mutations</td>
+<td>Art 4</td>
+<td>Single-study supported</td>
+<td>Unmutated reverted MIC 1 mg/L after 200 gen; ramR g.517_518del maintained MIC 32 mg/L</td>
+</tr>
+<tr>
+<td>10</td>
+<td>IS26 mediates mobilization of tmexCD1-toprJ1 across plasmid types and chromosomal locations, with a shared 24,087-bp core structure</td>
+<td>Art 10, 9, 11</td>
+<td>Multi-study supported</td>
+<td>Conserved core flanked by IS26; plasmid (n=8) and chromosome (n=1); 100% coverage/99.99% identity</td>
+</tr>
+</tbody>
+</table>
+<h3>H.8 Consistency Note</h3>
+<p>All claims in MODULE H have been cross-checked against MODULE F (Claim Status Ledger). Status labels are harmonized: claims labeled "Multi-study supported" in H.7 correspond to claims with ≥2 supporting articles in MODULE F; claims labeled "Single-study supported" match single-article entries in MODULE F; claims labeled "Proposed" match MODULE F proposed-status claims. No escalation of evidence level has occurred during the merge. Where the Scientific Landscape source text used the word "SUPPORTED" without distinguishing single- vs multi-study, the merged version applies the stricter distinction per the package global rules.</p>
+<hr/>
+<p><em>Package generated from 13 PASS 1 extraction files. No external knowledge added. No recommendations included. Conservative labeling applied throughout. Scientific Landscape module merged from separately generated analysis.</em></p>
+
+    
+<h2>Closing Judgment</h2>
+<p><strong>Scientific Evidence Dossier — Tigecycline Resistance in <em>Klebsiella pneumoniae</em></strong> is commercially credible as a <strong>mechanistic evidence product</strong>. It reads best as a disciplined synthesis of what is strongly supported, what is directionally supported, and what remains provisional. Its authority comes from selection and constraint, not from claiming closure where the corpus does not provide it.</p>
+
+<div class="info-box">
+  <div class="box-title">Fit for use</div>
+  <div class="box-body">Fit for expert mechanism prioritization, internal evidence review, claim vetting, research framing, and identifying which resistance pathways are strong enough to anchor downstream analysis or positioning.</div>
+</div>
+
+<div class="warning-box">
+  <div class="box-title">Not fit for use</div>
+  <div class="box-body">Not fit for direct clinical decision-making, treatment recommendations, prevalence extrapolation beyond the sampled settings, or asserting that newer/mobile mechanisms are causally settled when the corpus lacks direct functional closure.</div>
+</div>
+
+<div class="note-box">
+  <div class="box-title">Bottom-line decision</div>
+  <div class="box-body">Use this dossier with <strong>high confidence</strong> for the RamR–RamA–AcrAB-TolC story, <strong>measured confidence</strong> for tet(A), heteroresistance, and tmexCD1-toprJ1-associated findings, and <strong>explicit caution</strong> for any interpretation that extends beyond in vitro and observational evidence.</div>
+</div>
+
+    <footer class="report-footer">
+      <div class="brand">Scientific Evidence Dossier Series</div>
+      <div class="sub">Scientific Evidence Dossier — premium evidence positioning edition</div>
+    </footer>
+  </main>
+</body>
+</html>
