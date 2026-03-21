@@ -640,6 +640,10 @@ a {
   padding-top: 48px;
 }
 
+.contact-actions .btn {
+  white-space: nowrap;
+}
+
 @media (max-width: 1100px) {
   .hero-grid,
   .audience-grid,
