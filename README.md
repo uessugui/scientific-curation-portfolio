@@ -1,17 +1,21 @@
 # Scientific Curation Portfolio
 
-Selected samples of my work in scientific literature curation, with a focus on **infection biology** and **antimicrobial resistance (AMR)**.
+Selected samples of my work in **scientific literature curation**, with a focus on **infection biology** and **antimicrobial resistance (AMR)**.
 
-This portfolio presents structured analytical outputs designed to support literature-heavy scientific work for **students, PhD researchers, and science-facing teams**. The samples shown here reflect the kinds of work I do when researchers need clear, traceable analysis of existing evidence.
+This portfolio presents **structured, traceable, and decision-oriented analytical outputs** for literature-heavy scientific work. The sample types shown here are designed for researchers and science-facing teams who need existing evidence to be **synthesized clearly, evaluated critically, and organized for practical use**.
 
 ---
 
 ## What this portfolio includes
 
-- **Mechanistic Synthesis**
-- **Structured Evidence Dossiers**
-- **Scientific Landscape Analyses**
-- **Comparative and Methodological Appraisal Briefs**
+- **Scientific Landscape Analysis**  
+  Field-level evidence synthesis across multiple papers, with structured comparison, evidence gaps, and high-level interpretation.
+
+- **Comparative Appraisal Summary**  
+  Methodological and comparative appraisal of studies, methods, targets, or evidence claims, with emphasis on robustness and interpretive limits.
+
+- **Structured Evidence Dossier**  
+  Deep structured analysis of a single paper or focused scientific question, using an expanded evidence-extraction approach.
 
 ---
 
@@ -27,26 +31,28 @@ This portfolio presents structured analytical outputs designed to support litera
 ## Featured Sample Types
 
 ### [Scientific Landscape Analysis](samples/Scientific_Landscape_Analysis.html)
-Broad synthesis of a literature set, with structured comparison, evidence gaps, and high-level interpretation across multiple papers.
+Broad synthesis of a literature set, designed to clarify major patterns, evidence gaps, and high-level scientific signals across multiple papers.
 
 ### [Comparative Appraisal Summary](samples/Comparative_Appraisal_Summary.html)
-Decision-oriented comparison of studies, methods, targets, or evidence claims.
+Structured comparison of studies or evidence claims, with attention to methodological quality, interpretive strength, and decision-relevant differences.
 
 ### [Structured Evidence Dossier](samples/Structured_Evidence_Dossier.html)
-Deep-dive structured analysis of a single paper or focused scientific question.
+Deep-dive structured analysis of a single paper or focused scientific question, designed to support review building, evidence tracking, and research interpretation.
 
 ---
 
 ## What this work is for
 
-This work is designed for situations where the main challenge is not generating more data, but making sense of existing literature.
+This work is designed for situations where the main challenge is **not generating more data, but making sense of existing literature**.
 
 Typical use cases include:
 
 - synthesizing scattered evidence on a focused scientific question
-- comparing studies, methods, targets, or claims
+- comparing studies, methods, targets, or evidence claims
+- extracting structured evidence from individual papers
+- identifying methodological strengths, limitations, and uncertainty
 - tracing mechanistic reasoning across the literature
-- producing structured summaries that save researchers time
+- producing clear analytical outputs that save researchers time
 
 ---
 
@@ -60,7 +66,7 @@ Typical use cases include:
 
 ## About me
 
-I am an MSc Infection Biology student with a BSc in Biomedical Science, focused on infection biology and AMR. My work centers on structured scientific curation for literature-heavy research questions.
+I am an **MSc Infection Biology student** with a **BSc in Biomedical Science**, focused on infection biology and AMR. My work centers on **structured scientific curation for literature-heavy research questions**, with an emphasis on clarity, traceability, and rigorous interpretation of existing evidence.
 
 ---
 
