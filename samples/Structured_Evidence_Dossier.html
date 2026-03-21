@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expanded PICO | Structured Evidence Dossier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #fafbff;
+      --bg-card: #ffffff;
+      --text-main: #2a3440;
+      --text-muted: #6b7785;
+      --text-soft: #8a94a3;
+
+      --purple-main: #9b87f5;
+      --purple-soft: #d4c5ff;
+      --purple-bg: #e8deff;
+      --purple-bg-2: #f0e5ff;
+      --purple-strong: #7c5ccc;
+
+      --mint-bg: #f0fff8;
+      --mint-soft: #d4f4e7;
+      --mint-strong: #7dd8a8;
+
+      --yellow-bg: #fff9f0;
+      --yellow-soft: #fff4d6;
+      --yellow-strong: #ffb870;
+
+      --red-bg: #fff5f5;
+      --red-soft: #ffd6d6;
+      --red-strong: #d55050;
+
+      --blue-bg: #f0f8ff;
+      --blue-soft: #c9f0ff;
+      --blue-strong: #4b88d6;
+
+      --border-soft: rgba(155, 135, 245, 0.10);
+      --border-table: #edf0fb;
+      --shadow-soft:
+        0 1px 2px rgba(30, 40, 90, 0.04),
+        0 4px 16px rgba(30, 40, 90, 0.06),
+        0 12px 48px rgba(30, 40, 90, 0.08);
+      --shadow-card-inset:
+        0 1px 3px rgba(30, 40, 90, 0.03),
+        0 2px 8px rgba(30, 40, 90, 0.04);
+      --radius-card: 20px;
+      --radius-soft: 10px;
+      --radius-pill: 999px;
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(ellipse at 10% 0%, rgba(212, 197, 255, 0.26), transparent 40%),
+        radial-gradient(ellipse at 90% 5%, rgba(125, 216, 168, 0.12), transparent 32%),
+        radial-gradient(ellipse at 50% 100%, rgba(201, 240, 255, 0.10), transparent 30%),
+        var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body { padding: 44px 20px 64px; }
+
+    .report-container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .report-header, section {
+      background: rgba(255,255,255,0.97);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      border-radius: var(--radius-card);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .report-header {
+      padding: 38px 38px 34px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .report-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(232, 222, 255, 0.52), transparent 46%),
+        linear-gradient(35deg, rgba(240, 255, 248, 0.38), transparent 42%);
+      pointer-events: none;
+    }
+
+    .report-header > * { position: relative; z-index: 1; }
+
+    .product-family {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--purple-strong);
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(124, 92, 204, 0.16);
+      padding: 7px 12px;
+      border-radius: var(--radius-pill);
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 920px;
+      color: var(--text-muted);
+      font-size: 1.02rem;
+    }
+
+    .h1-underline {
+      width: 88px;
+      height: 5px;
+      border-radius: 999px;
+      margin: 22px 0 24px;
+      background: linear-gradient(90deg, var(--purple-main), var(--mint-strong));
+    }
+
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.9);
+      color: var(--text-main);
+      border: 1px solid rgba(155, 135, 245, 0.14);
+      border-radius: var(--radius-pill);
+      padding: 9px 16px;
+      font-size: 0.92rem;
+      box-shadow: 0 1px 3px rgba(30, 40, 90, 0.04);
+    }
+
+    .tagline {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    section {
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      font-size: 1.35rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(155, 135, 245, 0.12);
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.02rem;
+      line-height: 1.3;
+    }
+
+    p { margin: 0; }
+
+    .summary-grid,
+    .card-grid,
+    .signal-row,
+    .two-col,
+    .audience-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .summary-grid,
+    .card-grid,
+    .signal-row,
+    .audience-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .two-col {
+      grid-template-columns: 1.12fr 0.88fr;
+      align-items: start;
+      gap: 18px;
+    }
+
+    .summary-cell,
+    .info-card,
+    .signal-card,
+    .audience-card,
+    .boundary-card,
+    .mechanism-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(155, 135, 245, 0.10);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow:
+        0 1px 3px rgba(30, 40, 90, 0.03),
+        0 2px 8px rgba(30, 40, 90, 0.04);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .summary-cell:hover,
+    .info-card:hover,
+    .signal-card:hover,
+    .audience-card:hover,
+    .mechanism-card:hover {
+      box-shadow:
+        0 2px 6px rgba(30, 40, 90, 0.05),
+        0 8px 24px rgba(30, 40, 90, 0.07);
+      transform: translateY(-1px);
+    }
+
+    .cell-label,
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      color: var(--purple-strong);
+      margin-bottom: 10px;
+    }
+
+    .exec-snapshot {
+      margin-top: 18px;
+      border-radius: 16px;
+      padding: 22px 24px;
+      background: linear-gradient(135deg, rgba(232, 222, 255, 0.55), rgba(240, 255, 248, 0.50));
+      border: 1px solid rgba(155, 135, 245, 0.14);
+      box-shadow: inset 0 1px 2px rgba(155, 135, 245, 0.06);
+    }
+
+    .signal-card.mint { background: linear-gradient(180deg, #ffffff, var(--mint-bg)); border-color: var(--mint-soft); }
+    .signal-card.blue { background: linear-gradient(180deg, #ffffff, var(--blue-bg)); border-color: var(--blue-soft); }
+    .signal-card.yellow { background: linear-gradient(180deg, #ffffff, var(--yellow-bg)); border-color: var(--yellow-soft); }
+    .signal-card.purple { background: linear-gradient(180deg, #ffffff, var(--purple-bg-2)); border-color: rgba(232, 222, 255, 0.6); }
+    .signal-card.red { background: linear-gradient(180deg, #ffffff, var(--red-bg)); border-color: var(--red-soft); }
+
+    .signal-card strong,
+    .audience-card strong,
+    .boundary-card strong,
+    .mechanism-card strong,
+    .info-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border-table);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow:
+        0 1px 3px rgba(30, 40, 90, 0.03),
+        0 2px 8px rgba(30, 40, 90, 0.04);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-table);
+      vertical-align: top;
+      font-size: 0.94rem;
+    }
+
+    th {
+      background: rgba(240, 229, 255, 0.58);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--purple-strong);
+      font-weight: 700;
+    }
+
+    tbody tr:hover {
+      background: rgba(240, 229, 255, 0.12);
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+
+    .footnote {
+      margin-top: 12px;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .mini-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .mini-pill.purple { background: rgba(232, 222, 255, 0.8); color: var(--purple-strong); border-color: rgba(124, 92, 204, 0.15); }
+    .mini-pill.mint { background: rgba(212, 244, 231, 0.6); color: #2f7e57; border-color: rgba(125, 216, 168, 0.2); }
+    .mini-pill.yellow { background: rgba(255, 244, 214, 0.9); color: #a06f25; border-color: rgba(255, 184, 112, 0.25); }
+    .mini-pill.blue { background: rgba(201, 240, 255, 0.7); color: #2f6ea9; border-color: rgba(75, 136, 214, 0.2); }
+    .mini-pill.red { background: rgba(255, 214, 214, 0.7); color: #a24646; border-color: rgba(213, 80, 80, 0.2); }
+
+    ul.clean-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text-main);
+    }
+
+    ul.clean-list li + li { margin-top: 8px; }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .closing-note {
+      padding: 22px 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(155, 135, 245, 0.14);
+      background: linear-gradient(135deg, rgba(240, 229, 255, 0.65), rgba(240, 248, 255, 0.45));
+      box-shadow: inset 0 1px 2px rgba(155, 135, 245, 0.06);
+    }
+
+    .closing-note p,
+    .exec-snapshot p {
+      margin: 0;
+    }
+
+    .muted { color: var(--text-muted); }
+
+    @media (max-width: 900px) {
+      .summary-grid,
+      .card-grid,
+      .signal-row,
+      .two-col,
+      .split-grid,
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+      .report-header, section { padding: 24px; }
+      body { padding: 22px 14px 38px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="report-container">
+    <header class="report-header">
+      <div class="product-family">Scientific Evidence Dossier Series</div>
+      <h1>Structured Evidence Dossier</h1>
+      <p class="subtitle">Expanded PICO and deep evidence extraction for a single experimental article on <strong>amikacin lock therapy, biofilm persistence, and resistance emergence in <em>Escherichia coli</em> catheter-associated infection models</strong>. This format is built to function as a reusable article map for review writing, evidence tracking, and model-specific scientific interpretation.</p>
+      <div class="h1-underline"></div>
+
+      <div class="meta-strip">
+        <span class="meta-pill"><strong>Type</strong> Expanded PICO</span>
+        <span class="meta-pill"><strong>Evidence basis</strong> Single source article only</span>
+        <span class="meta-pill"><strong>Focus</strong> Population, intervention, models, endpoints, mechanisms</span>
+        <span class="meta-pill"><strong>Primary use</strong> Review foundation / evidence extraction</span>
+      </div>
+
+      <p class="tagline">Source-constrained dossier. It preserves reported findings, separates them from interpretation, and does not convert one paper into a broader field claim or pseudo-consensus statement.</p>
+    </header>
+
+    <section>
+      <h2>Executive Readout</h2>
+      <div class="summary-grid">
+        <div class="summary-cell">
+          <span class="cell-label">Paper-level answer</span>
+          <p>The extracted study supports a clear within-paper pattern: <strong>intermittent amikacin lock exposure can leave surviving biofilm populations and select low-level resistance-associated changes</strong>, whereas <strong>10-day continuous exposure achieved eradication without detected resistance emergence</strong> in the reported setup.</p>
+        </div>
+        <div class="summary-cell">
+          <span class="cell-label">What this dossier is for</span>
+          <p>This document is most useful when the goal is to <strong>understand one paper deeply and reuse it accurately</strong>: what was actually tested, in which models, with which comparators, against which endpoints, and with which mechanistic claims.</p>
+        </div>
+        <div class="summary-cell">
+          <span class="cell-label">Main uncertainty boundary</span>
+          <p>The paper is rich experimentally but still remains <strong>one mechanistic article in specific catheter-biofilm systems</strong>. This dossier therefore supports structured reuse and qualified interpretation, not broad clinical generalisation or pooled effect claims.</p>
+        </div>
+        <div class="summary-cell">
+          <span class="cell-label">Best reuse case</span>
+          <p>Use this as a <strong>review foundation tool</strong>, a lab discussion map, or a traceable extraction layer before moving into comparative synthesis, appraisal, or strategy-facing deliverables.</p>
+        </div>
+      </div>
+
+      <div class="exec-snapshot">
+        <span class="section-label">Reader-facing takeaway</span>
+        <p><strong>This is not a paper summary dressed up as a report.</strong> It is an extraction architecture: a single-study map that makes the design, model context, interventions, endpoints, mechanistic claims, and interpretation limits immediately reusable.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>What This Format Delivers</h2>
+      <div class="signal-row">
+        <div class="signal-card mint">
+          <strong>Expanded PICO, not just classic PICO</strong>
+          <p>Population, intervention, comparator, and outcomes are retained, but the dossier also captures models, molecular entities, mechanistic links, and endpoint logic that matter for experimental interpretation.</p>
+        </div>
+        <div class="signal-card blue">
+          <strong>Clear evidential boundaries</strong>
+          <p>Reported findings stay separate from author interpretation. That prevents downstream reuse from quietly inflating hypotheses into settled results.</p>
+        </div>
+        <div class="signal-card yellow">
+          <strong>Designed for downstream work</strong>
+          <p>The structure is built to feed review writing, evidence tables, lab planning discussions, and later comparative synthesis without having to re-open the paper from scratch.</p>
+        </div>
+        <div class="signal-card purple">
+          <strong>Model-aware reading</strong>
+          <p>The dossier keeps strain, nutrient context, lock schedule, and in vitro versus in vivo distinctions visible, which is critical for not over-reading one model into another.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Study at a Glance</h2>
+      <div class="two-col">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Extracted answer</th>
+                <th>Why it matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Population / problem</strong></td>
+                <td><em>E. coli</em> catheter-associated biofilms in in vitro TIVAP systems, TPN-fed settings, and an in vivo rat TIVAP model.</td>
+                <td>Keeps the biological and device context explicit; this is a biofilm-treatment resistance question, not a generic planktonic AMR study.</td>
+              </tr>
+              <tr>
+                <td><strong>Intervention / exposure</strong></td>
+                <td>Amikacin antibiotic lock therapy at 8 mg/mL (500× MIC), tested as 10-day continuous, 7-day continuous, and intermittent 8-hour cycles.</td>
+                <td>The schedule is central: exposure timing is part of the biological question, not just a delivery detail.</td>
+              </tr>
+              <tr>
+                <td><strong>Comparators</strong></td>
+                <td>PBS lock control, ancestor populations for MIC comparison, and regimen-to-regimen contrasts across nutrient and model contexts.</td>
+                <td>These comparators determine whether the paper is showing eradication failure, resistance emergence, or both.</td>
+              </tr>
+              <tr>
+                <td><strong>Outcomes / endpoints</strong></td>
+                <td>Biofilm and free-floating CFU, eradication or regrowth status, growth frequency on amikacin plates, population MIC shifts, bioluminescence, and mutation detection by sequencing.</td>
+                <td>This is why a standard one-line PICO would undersell the article: the evidential answer depends on multiple endpoint layers.</td>
+              </tr>
+              <tr>
+                <td><strong>Headline contribution</strong></td>
+                <td>Intermittent lock regimens can create conditions compatible with survival and resistance-associated evolution, whereas sufficiently prolonged continuous exposure may avoid that pattern in the reported system.</td>
+                <td>Captures the paper’s real contribution without pretending it establishes universal clinical rules.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <strong>Best scientific use</strong>
+            <p>Foundation for a review section on antibiotic lock therapy, biofilm evolutionary dynamics, or resistance emergence under structured antimicrobial exposure.</p>
+            <div class="pill-row">
+              <span class="mini-pill purple">Review writing</span>
+              <span class="mini-pill mint">Evidence tracking</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <strong>Best operational use</strong>
+            <p>Quickly recover what was tested, in which exact system, and which endpoints support the paper’s strongest result lines without re-parsing the article.</p>
+            <div class="pill-row">
+              <span class="mini-pill blue">Lab discussion</span>
+              <span class="mini-pill yellow">Study comparison prep</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <strong>Main caution</strong>
+            <p>This paper is rich enough to support mechanistic discussion, but not broad enough to stand in for the full evidence base on catheter salvage or clinical ALT optimisation.</p>
+            <div class="pill-row">
+              <span class="mini-pill red">Single-paper limit</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <strong>What the dossier preserves</strong>
+            <p>Model distinctions, strain-specific context, quantitative endpoint classes, mutation signals, and the line between reported findings and author interpretation.</p>
+            <div class="pill-row">
+              <span class="mini-pill purple">Traceability</span>
+              <span class="mini-pill mint">Reuse-ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Evidence Architecture</h2>
+      <div class="signal-row">
+        <div class="signal-card mint">
+          <strong>Model stack</strong>
+          <p>The extraction spans LB-fed in vitro TIVAP experiments, TPN-fed in vitro work, and an in vivo rat TIVAP system. Keeping those layers separate is essential because resistance signal strength was not identical across them.</p>
+        </div>
+        <div class="signal-card blue">
+          <strong>Entity layer</strong>
+          <p>The dossier retains strain and mutation detail, including <em>fusA</em>, <em>sbmA</em>, <em>cpxA</em>, <em>acrD</em>, and related biofilm-linked genes, because these are part of how the paper argues causality and adaptation.</p>
+        </div>
+        <div class="signal-card yellow">
+          <strong>Endpoint layer</strong>
+          <p>Eradication status, MIC change, growth frequency, sequencing, and imaging are treated as separate readouts. That matters because no single endpoint fully carries the story on its own.</p>
+        </div>
+        <div class="signal-card purple">
+          <strong>Interpretation layer</strong>
+          <p>The dossier shows where the paper is reporting direct observations and where it is moving into hypotheses about biofilms as evolutionary incubators or host context as an accelerator.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Biological Entities and Systems</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Key extracted elements</th>
+              <th>Why it should stay visible</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Organisms / strains</strong></td>
+              <td><em>E. coli</em> LF82, 55989, and 55989pAT881 across in vitro and in vivo catheter-associated biofilm models.</td>
+              <td>Different strains and constructs support different parts of the argument; collapsing them would weaken interpretive precision.</td>
+            </tr>
+            <tr>
+              <td><strong>Device / model context</strong></td>
+              <td>TIVAP biofilm systems with nutrient-specific contexts and a rat preclinical TIVAP model.</td>
+              <td>The paper is fundamentally about resistance under structured device-associated biofilm exposure, not a generic susceptibility assay.</td>
+            </tr>
+            <tr>
+              <td><strong>Molecular entities</strong></td>
+              <td><em>fusA</em>, <em>sbmA</em>, <em>cpxA</em>, <em>acrD</em>, <em>fimA</em>, <em>fimH</em>, and additional deletion-block genes in 55989-derived populations.</td>
+              <td>These genes anchor the mechanistic interpretation and help map where the study shifts from observation to explanation.</td>
+            </tr>
+            <tr>
+              <td><strong>Clinical relevance cue</strong></td>
+              <td>Catheter salvage and antibiotic lock therapy are the practical backdrop, but the evidence remains model-based rather than direct clinical effectiveness evidence.</td>
+              <td>This keeps translational enthusiasm proportional to what the study actually tested.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Interventions, Comparators, and Endpoint Logic</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Study layer</th>
+              <th>Extracted content</th>
+              <th>Interpretive consequence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Intervention schedules</strong></td>
+              <td>10-day continuous ALTAMK, 7-day continuous ALTAMK, and intermittent 8-hour ALTAMK cycles with recovery windows in LB or TPN contexts.</td>
+              <td>The study is asking whether <strong>schedule architecture</strong> changes both eradication and resistance outcomes.</td>
+            </tr>
+            <tr>
+              <td><strong>Comparator structure</strong></td>
+              <td>PBS lock controls, ancestor MIC baselines, and cross-regimen contrasts.</td>
+              <td>These comparators help separate treatment failure, incomplete eradication, and resistance-associated shifts.</td>
+            </tr>
+            <tr>
+              <td><strong>Primary endpoints</strong></td>
+              <td>CFU burden, regrowth or eradication, growth frequency on amikacin plates, and MIC changes.</td>
+              <td>The paper’s strongest answer comes from endpoint convergence, not from one headline number alone.</td>
+            </tr>
+            <tr>
+              <td><strong>Mechanistic support endpoints</strong></td>
+              <td>Whole-population sequencing, mutation frequency patterns, and model-specific readouts such as bioluminescence in vivo.</td>
+              <td>These endpoints are what elevate the article from treatment result reporting into mechanistic evidence territory.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">Expanded PICO is useful here precisely because the paper’s answer would be distorted if population, exposure schedule, and endpoint class were reduced to a minimalist extraction frame.</p>
+    </section>
+
+    <section>
+      <h2>Key Result Lines Worth Reusing</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Condition</th>
+              <th>Most reusable result line</th>
+              <th>Safe reading of that result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>10-day continuous lock</strong></td>
+              <td>Reported eradication of biofilm bacteria at endpoint without detected resistance emergence in the described setup.</td>
+              <td>Strongest within-paper success case; safest to cite as a model-specific eradication result rather than a universal treatment recommendation.</td>
+            </tr>
+            <tr>
+              <td><strong>7-day continuous lock</strong></td>
+              <td>Poor eradication despite lack of detected resistance emergence, with endpoint counts remaining close to control-like levels after recovery.</td>
+              <td>Shows that failure to eradicate and resistance emergence are related but not identical outcomes.</td>
+            </tr>
+            <tr>
+              <td><strong>Intermittent lock in LB</strong></td>
+              <td>Repeated low-level resistance emergence, including elevated growth frequencies on amikacin plates and MIC increases in selected replicates.</td>
+              <td>Supports the paper’s claim that intermittent selective pressure can amplify adaptation risk in structured biofilm communities.</td>
+            </tr>
+            <tr>
+              <td><strong>Intermittent lock in TPN</strong></td>
+              <td>Resistance-associated changes persisted in a clinically relevant nutrient context, including convergent mutation signals.</td>
+              <td>Extends the phenomenon beyond one nutrient environment while still staying model-bound.</td>
+            </tr>
+            <tr>
+              <td><strong>In vivo rat TIVAP model</strong></td>
+              <td>Resistance appeared faster and at higher levels than in vitro in some endpoint populations, with recurring <em>fusA</em> mutation signals.</td>
+              <td>Important for hypothesis strength, but still preclinical and not equivalent to direct clinical effectiveness evidence.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Mechanistic Layer: Reported vs Proposed</h2>
+      <div class="split-grid">
+        <div class="mechanism-card">
+          <span class="cell-label">Supported as reported</span>
+          <ul class="clean-list">
+            <li><strong><em>fusA</em>, <em>sbmA</em>, and <em>cpxA</em></strong> are repeatedly positioned in the paper as resistance-relevant mutation signals under intermittent exposure contexts.</li>
+            <li><strong><em>cpxA</em> / <em>acrD</em></strong> is discussed within a cell-envelope stress and efflux-regulation frame.</li>
+            <li>Low-level resistance, mutation convergence, and structured biofilm exposure are treated as linked features of the observed experimental pattern.</li>
+          </ul>
+        </div>
+        <div class="mechanism-card">
+          <span class="cell-label">Proposed / interpretive layer</span>
+          <ul class="clean-list">
+            <li>Biofilms are framed as <strong>evolutionary incubators</strong> where treatment timing can influence adaptive trajectories.</li>
+            <li>Host context may accelerate resistance emergence relative to in vitro conditions.</li>
+            <li>Intermittent exposure is interpreted as a primary driver of amplification in structured communities, but that wording should stay attributed to interpretation rather than treated as settled law.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What This Paper Does Not Settle</h2>
+      <div class="signal-row">
+        <div class="signal-card red">
+          <strong>Not a field-level answer</strong>
+          <p>The dossier does not imply that all antibiotic lock regimens behave this way across organisms, devices, or treatment environments. It maps one article deeply; it does not replace a scientific landscape.</p>
+        </div>
+        <div class="signal-card yellow">
+          <strong>Not a clinical effectiveness report</strong>
+          <p>The evidence is mechanistic and model-rich, but not the same as comparative patient-outcome evidence or bedside protocol optimisation.</p>
+        </div>
+        <div class="signal-card blue">
+          <strong>Not a pooled reliability judgment</strong>
+          <p>This dossier extracts and organises the paper. It does not by itself decide whether this article should lead a larger argument; that is the job of appraisal or comparative synthesis.</p>
+        </div>
+        <div class="signal-card purple">
+          <strong>Not detached from model context</strong>
+          <p>Any reuse that strips out strain, nutrient, duration, or in vivo versus in vitro context will weaken the scientific accuracy of the paper’s claims.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Who This Dossier Serves</h2>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <strong>MSc students</strong>
+          <p>Fast route to understanding what the paper actually tested and how to talk about it without flattening the biology or mixing up result with interpretation.</p>
+        </div>
+        <div class="audience-card">
+          <strong>PhD researchers</strong>
+          <p>Reusable extraction layer for review drafting, evidence matrices, thesis sections, and precise cross-paper comparison preparation.</p>
+        </div>
+        <div class="audience-card">
+          <strong>Labs and early science-facing teams</strong>
+          <p>Efficient way to recover model context, mechanistic leads, and uncertainty boundaries before deciding whether this paper should influence deeper analysis or experimental thinking.</p>
+        </div>
+        <div class="audience-card">
+          <strong>Best level of value</strong>
+          <p>High when the need is <strong>clarity and traceable structure</strong>. Medium when the need is direct prioritisation or strategic recommendation, because those require additional comparative layers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Traceability and Use Boundary</h2>
+      <div class="closing-note">
+        <p><strong>Prepared as an expanded PICO product:</strong> one article, deeply structured, with explicit preservation of model context, intervention schedule, endpoint class, mutation-level signals, and interpretation boundaries. The value of this format is not that it sounds bigger than the paper. The value is that it lets a reader reuse the paper accurately and quickly in serious scientific work.</p>
+      </div>
+      <p class="footnote">Suggested next-layer use: pair this dossier with methodological appraisal when the question shifts from “what exactly is in this paper?” to “how much weight should this paper carry?”</p>
+    </section>
+  </main>
+</body>
+</html>
