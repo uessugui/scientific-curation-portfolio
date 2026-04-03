@@ -1,43 +1,47 @@
 # Scientific Curation Portfolio
 
-Selected samples of my work in **scientific literature curation**, with a focus on **infection biology** and **antimicrobial resistance (AMR)**.
+Selected samples of my work in **scientific curation**, with a focus on **infection biology**, **antimicrobial resistance (AMR)**, and related biomedical research questions.
 
-This portfolio presents **structured, traceable, and decision-oriented analytical outputs** for literature-heavy scientific work. The sample types shown here are designed for researchers and science-facing teams who need existing evidence to be **synthesized clearly, evaluated critically, and organized for practical use**.
+This portfolio presents **structured, traceable, and decision-oriented analytical outputs** for literature-heavy scientific work. It is designed for researchers and science-facing teams who need existing evidence to be **organized clearly, interpreted rigorously, and reused more efficiently**.
+
+**Live website:** https://uessugui.github.io/scientific-curation-portfolio/
 
 ---
 
 ## What this portfolio includes
 
+This portfolio currently centers on three flagship formats:
+
 - **Scientific Landscape Analysis**  
-  Field-level evidence synthesis across multiple papers, with structured comparison, evidence gaps, and high-level interpretation.
+  Field-level evidence synthesis across multiple papers, designed to clarify major patterns, recurring mechanisms, evidence gaps, and high-level scientific signals.
 
 - **Comparative Appraisal Summary**  
-  Methodological and comparative appraisal of studies, methods, targets, or evidence claims, with emphasis on robustness and interpretive limits.
+  Structured comparative appraisal of studies or evidence claims, with emphasis on methodological quality, interpretive strength, and confidence boundaries.
 
 - **Structured Evidence Dossier**  
-  Deep structured analysis of a single paper or focused scientific question, using an expanded evidence-extraction approach.
+  Deep, structured analysis of a single paper or focused scientific question, using an expanded evidence-extraction approach.
 
 ---
 
-## Areas of Focus
+## Featured sample types
+
+### [Scientific Landscape Analysis](samples/Scientific_Landscape_Analysis.html)
+Broad synthesis of a literature set, designed to support scientific positioning, review framing, and field-level understanding.
+
+### [Comparative Appraisal Summary](samples/Comparative_Appraisal_Summary.html)
+Structured comparison of studies or evidence claims, with attention to robustness, interpretive limits, and decision-relevant differences.
+
+### [Structured Evidence Dossier](samples/Structured_Evidence_Dossier.html)
+Deep structured analysis of a single paper or focused scientific question, designed to support review groundwork, evidence tracking, and precise research interpretation.
+
+---
+
+## Areas of focus
 
 - Infection biology
 - Antimicrobial resistance
 - Host–pathogen interactions
 - Biomedical evidence synthesis
-
----
-
-## Featured Sample Types
-
-### [Scientific Landscape Analysis](samples/Scientific_Landscape_Analysis.html)
-Broad synthesis of a literature set, designed to clarify major patterns, evidence gaps, and high-level scientific signals across multiple papers.
-
-### [Comparative Appraisal Summary](samples/Comparative_Appraisal_Summary.html)
-Structured comparison of studies or evidence claims, with attention to methodological quality, interpretive strength, and decision-relevant differences.
-
-### [Structured Evidence Dossier](samples/Structured_Evidence_Dossier.html)
-Deep-dive structured analysis of a single paper or focused scientific question, designed to support review building, evidence tracking, and research interpretation.
 
 ---
 
@@ -60,7 +64,8 @@ Typical use cases include:
 
 - MSc students
 - PhD researchers
-- Early-stage biotech or science-facing teams working in infection biology and AMR
+- Small labs and early-stage science-facing teams
+- Researchers working in infection biology, AMR, and related biomedical areas
 
 ---
 
@@ -72,4 +77,8 @@ I am an **MSc Infection Biology student** with a **BSc in Biomedical Science**, 
 
 ## Contact
 
-For collaboration or scientific curation inquiries, contact me through my GitHub profile or linked professional pages.
+For collaboration or scientific curation inquiries:
+
+- **Portfolio:** https://uessugui.github.io/scientific-curation-portfolio/
+- **LinkedIn:** https://www.linkedin.com/in/gabriela-uessugui
+- **GitHub:** https://github.com/uessugui/scientific-curation-portfolio
