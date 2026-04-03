@@ -81,4 +81,3 @@ For collaboration or scientific curation inquiries:
 
 - **Portfolio:** https://uessugui.github.io/scientific-curation-portfolio/
 - **LinkedIn:** https://www.linkedin.com/in/gabriela-uessugui
-- **GitHub:** https://github.com/uessugui/scientific-curation-portfolio
